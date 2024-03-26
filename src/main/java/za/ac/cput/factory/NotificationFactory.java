@@ -1,7 +1,7 @@
 package za.ac.cput.factory;
 
 /* NotificationFactory.java
-   NotificationFactory class
+   NotificationFactory model class
    Author: Leonard Gabriel Langa (221069054)
    Date: 23 March 2024
 */
