@@ -9,8 +9,8 @@ public class UserprofileFactory {
             return null;
         return new UserProfile.Builder().setName(Name).setSurename(Surename).setID(ID).build();
     }
-    public static UserProfile createUser(String Name,String Surename){
-        if (Helper.isNullorEmpty(Name)||Helper.isNullorEmpty(Surename))
+    public static UserProfile createUser(String Name,String Surename,String Gender,double Age){
+        if (Helper.isNullorEmpty(Name)||Helper.isNullorEmpty(Surename)||Helper.isNullorEmpty(Gender)||Helper.isNullorEmpty(String.valueOf(Age)))
             return null;
 
         String ID=Helper.generateID();
