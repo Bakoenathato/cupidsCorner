@@ -1,6 +1,13 @@
 package za.ac.cput.repository;
+/*
+    MatchingRepository.java
+    MatchingRepository class
+    Author: Thato Mokoena (222667087)
+    Date 27 March 2024
+*/
 
 import za.ac.cput.domain.Matching;
+import za.ac.cput.domain.Notification;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +16,7 @@ public class MatchingRepository implements IMatchingRepository{
 
     private static IMatchingRepository repository = null;
 
-    private final List<Matching> matchingList;
+    private List<Matching> matchingList;
 
     private MatchingRepository(){
         matchingList = new ArrayList<>();
@@ -23,7 +30,6 @@ public class MatchingRepository implements IMatchingRepository{
     }
 
 
-
     @Override
     public Matching create(Matching matches) {
         boolean success = matchingList.add(matches);
@@ -34,10 +40,11 @@ public class MatchingRepository implements IMatchingRepository{
     }
 
     @Override
-    public Matching read(String ID) {
+    public Matching read(String Id) {
         for (Matching m: matchingList) {
-            if(m.getConnections().equals(ID))
+            if(m.getConnections().equals(Id)) {
                 return m;
+            }
         }
         return null;
     }
@@ -59,8 +66,8 @@ public class MatchingRepository implements IMatchingRepository{
     }
 
     @Override
-    public boolean delete(String ID) {
-        Matching matchToDelete = read(ID);
+    public boolean delete(String Id) {
+        Matching matchToDelete = read(Id);
 
         if (matchToDelete == null) {
             return false;

@@ -1,4 +1,10 @@
 package za.ac.cput.domain;
+/*
+    Image.java
+    Image class
+    Author: Thato Mokoena (222667087)
+    Date 27 March 2024
+*/
 
 import java.util.Objects;
 
