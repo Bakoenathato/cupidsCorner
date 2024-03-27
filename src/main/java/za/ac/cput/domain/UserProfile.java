@@ -1,11 +1,17 @@
 package za.ac.cput.domain;
-
+//UserProfile.java
+//UserProfile model class
+//Author:Braedon Sidney Mullins(222821825)
+//Date:27 March 2024
 public class UserProfile {
     private String Name;
     private String Surename;
     private String Gender;
     private double Age;
     private String ID;
+    private String Location;
+    private String Bio;
+
 
     public UserProfile() {
     }
@@ -16,6 +22,8 @@ public class UserProfile {
         this.Gender = builder.Gender;
         this.Age = builder.Age;
         this.ID = builder.ID;
+        this.Location=builder.Location;
+        this.Bio= builder.Bio;;
 
     }
 
@@ -47,6 +55,14 @@ public class UserProfile {
         return ID;
     }
 
+    public String getLocation() {
+        return Location;
+    }
+
+    public String getBio() {
+        return Bio;
+    }
+
     @Override
     public String toString() {
         return "UserProfile{" +
@@ -54,7 +70,9 @@ public class UserProfile {
                 ", Surename='" + Surename + '\'' +
                 ", Gender='" + Gender + '\'' +
                 ", Age=" + Age +
-                ", ID=" + ID +
+                ", ID='" + ID + '\'' +
+                ", Location='" + Location + '\'' +
+                ", Bio='" + Bio + '\'' +
                 '}';
     }
 
@@ -64,11 +82,15 @@ public class UserProfile {
         private String Gender;
         private double Age;
         private String ID;
+        private String Location;
+        private String Bio;
 
 
 
 
-    public Builder setName(String Name) {
+
+
+        public Builder setName(String Name) {
         this.Name = Name;
         return this;
     }
@@ -92,6 +114,14 @@ public class UserProfile {
         this.ID = ID;
         return this;
     }
+    public Builder setLocation(String Location){
+            this.Location=Location;
+            return this;
+    }
+    public Builder setBio(String Bio){
+            this.Bio=Bio;
+            return this;
+    }
 
     public Builder copy(UserProfile e) {
         this.Name = e.Name;
@@ -99,6 +129,8 @@ public class UserProfile {
         this.Gender = e.Gender;
         this.Age = e.Age;
         this.ID = e.ID;
+        this.Location= e.Location;
+        this.Bio=e.Bio;
         return this;
     }
 
