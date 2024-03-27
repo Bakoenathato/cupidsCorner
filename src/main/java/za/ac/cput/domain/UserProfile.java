@@ -5,7 +5,7 @@ package za.ac.cput.domain;
 //Date:27 March 2024
 public class UserProfile {
     private String Name;
-    private String Surename;
+    private String Surname;
     private String Gender;
     private double Age;
     private String ID;
@@ -18,7 +18,7 @@ public class UserProfile {
 
     private UserProfile(Builder builder) {
         this.Name = builder.Name;
-        this.Surename = builder.Surename;
+        this.Surname = builder.Surname;
         this.Gender = builder.Gender;
         this.Age = builder.Age;
         this.ID = builder.ID;
@@ -39,8 +39,8 @@ public class UserProfile {
         return Name;
     }
 
-    public String getSurename() {
-        return Surename;
+    public String getSurname() {
+        return Surname;
     }
 
     public String getGender() {
@@ -67,7 +67,7 @@ public class UserProfile {
     public String toString() {
         return "UserProfile{" +
                 "Name='" + Name + '\'' +
-                ", Surename='" + Surename + '\'' +
+                ", Surename='" + Surname + '\'' +
                 ", Gender='" + Gender + '\'' +
                 ", Age=" + Age +
                 ", ID='" + ID + '\'' +
@@ -78,7 +78,7 @@ public class UserProfile {
 
     public static class Builder {
         private String Name;
-        private String Surename;
+        private String Surname;
         private String Gender;
         private double Age;
         private String ID;
@@ -95,8 +95,8 @@ public class UserProfile {
         return this;
     }
 
-    public Builder setSurename(String Surename) {
-        this.Surename = Surename;
+    public Builder setSurname(String Surname) {
+        this.Surname = Surname;
         return this;
     }
 
@@ -125,7 +125,7 @@ public class UserProfile {
 
     public Builder copy(UserProfile e) {
         this.Name = e.Name;
-        this.Surename = e.Surename;
+        this.Surname = e.Surname;
         this.Gender = e.Gender;
         this.Age = e.Age;
         this.ID = e.ID;

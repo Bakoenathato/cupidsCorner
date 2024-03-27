@@ -1,9 +1,10 @@
-package za.ac.cput.repo;
+package za.ac.cput.repository;
 //UserprofileRepository.java
 //UserProfile Repo class
 //Author:Braedon Sidney Mullins(222821825)
 //Date:27 March 2024
 
+import za.ac.cput.repository.UserRepository;
 import za.ac.cput.domain.UserProfile;
 
 import java.util.ArrayList;
