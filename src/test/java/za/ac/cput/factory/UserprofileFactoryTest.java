@@ -25,7 +25,7 @@ class UserprofileFactoryTest {
 
     @Test
     void testCreateUser() {
-        String ID=Helper.generateID();
+        String ID=Helper.generateId();
         UserProfile user= UserprofileFactory.createUser("Braedon","mullins","Male",21,ID,"KuilsRiver","Like Cars");
         Boolean check=Helper.isNullOrEmpty(String.valueOf(user));
         assertNotNull(check);
