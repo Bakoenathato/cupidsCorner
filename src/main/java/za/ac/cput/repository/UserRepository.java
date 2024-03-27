@@ -1,4 +1,4 @@
-package za.ac.cput.repo;
+package za.ac.cput.repository;
 
 import za.ac.cput.domain.UserProfile;
 import za.ac.cput.repository.IRepository;

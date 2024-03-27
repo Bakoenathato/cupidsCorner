@@ -15,7 +15,7 @@ public class NotificationRepository implements INotificationRepository
 {
 
     private static INotificationRepository repository = null;
-    private List<Notification> notificationList;
+    private final List<Notification> notificationList;
 
     private NotificationRepository()
     {
@@ -77,10 +77,7 @@ public class NotificationRepository implements INotificationRepository
 
         if (deleteNotification == null)
             return false;
-        if (notificationList.remove(deleteNotification)){
-            return true;
-        }
-        return false;
+        return notificationList.remove(deleteNotification);
     }
 
     @Override

@@ -7,8 +7,8 @@ public class LocationFactory {
 
     public static Location createLocation(String city, String province, String area) {
 
-        if (Helper.isNullorEmpty(city) || Helper.isNullorEmpty(province)
-                || Helper.isNullorEmpty(area))
+        if (Helper.isNullOrEmpty(city) || Helper.isNullOrEmpty(province)
+                || Helper.isNullOrEmpty(area))
             return null;
         return new Location.Builder().setCity(city)
                 .setProvince(province)
