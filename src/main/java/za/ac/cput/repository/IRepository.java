@@ -1,4 +1,4 @@
-package za.ac.cput.repo;
+package za.ac.cput.repository;
 //IRepository.java
 //UserProfile Repo class
 //Author:Braedon Sidney Mullins(222821825)

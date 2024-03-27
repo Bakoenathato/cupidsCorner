@@ -10,7 +10,7 @@ Date: 24 March 2024
 
 public class UserFactory {
     public static User buildUser(String userId, String email, String password){
-        if (Helper.isNullorEmpty(userId) || Helper.isNullorEmpty(email) || Helper.isNullorEmpty(password))
+        if (Helper.isNullOrEmpty(userId) || Helper.isNullOrEmpty(email) || Helper.isNullOrEmpty(password))
             return null;
 
         return new User.Builder().setUserId(userId).setEmail(email).setPassword(password).build();
@@ -18,9 +18,9 @@ public class UserFactory {
     }
 
     public static User buildUser(String email, String password){
-        if (Helper.isNullorEmpty(email) || Helper.isNullorEmpty(password))
+        if (Helper.isNullOrEmpty(email) || Helper.isNullOrEmpty(password))
             return null;
-        String userId = Helper.generateID();
+        String userId = Helper.generateId();
         return new User.Builder().setUserId(userId).setEmail(email).setPassword(password).build();
 
     }

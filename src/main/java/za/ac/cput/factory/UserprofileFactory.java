@@ -17,7 +17,7 @@ public class UserprofileFactory {
         if (Helper.isNullOrEmpty(Name)||Helper.isNullOrEmpty(Surname)||Helper.isNullOrEmpty(Gender)||Helper.isNullOrEmpty(String.valueOf(Age))||Helper.isNullOrEmpty(Location)||Helper.isNullOrEmpty(Bio))
             return null;
 
-        String ID=Helper.generateID();
+        String ID=Helper.generateId();
         return new UserProfile.Builder().setName(Name).setSurname(Surname).setID(ID).setAge(Age).setLocation(Location).setBio(Bio).build();
     }
 }
