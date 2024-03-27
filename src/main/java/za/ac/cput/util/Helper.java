@@ -14,7 +14,7 @@ public class Helper {
     }
 
 
-    public static String generateId(){
+    public static String generateID(){
         return UUID.randomUUID().toString();
     }
 }
