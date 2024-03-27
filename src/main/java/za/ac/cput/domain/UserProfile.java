@@ -27,9 +27,9 @@ public class UserProfile {
 
     }
 
-//    public UserProfile(String name, String surename, String gender, int age, int ID) {
+//    public UserProfile(String name, String surname, String gender, int age, int ID) {
 //        Name = name;
-//        Surename = surename;
+//        Surname = surname;
 //        Gender = gender;
 //        Age = age;
 //        this.ID = ID;
@@ -67,7 +67,7 @@ public class UserProfile {
     public String toString() {
         return "UserProfile{" +
                 "Name='" + Name + '\'' +
-                ", Surename='" + Surname + '\'' +
+                ", Surname='" + Surname + '\'' +
                 ", Gender='" + Gender + '\'' +
                 ", Age=" + Age +
                 ", ID='" + ID + '\'' +
