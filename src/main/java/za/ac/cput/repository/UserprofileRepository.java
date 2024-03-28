@@ -9,15 +9,15 @@ import za.ac.cput.domain.UserProfile;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserprofileRepository implements UserRepository {
-    private static UserRepository repository = null;
+public class UserprofileRepository implements IUserProfileRepository {
+    private static IUserProfileRepository repository = null;
     private List<UserProfile> UserList;
 
     private UserprofileRepository() {
         UserList = new ArrayList<>();
     }
 
-    public static UserRepository getRepository() {
+    public static IUserProfileRepository getRepository() {
         if (repository == null) {
             repository = new UserprofileRepository();
         }

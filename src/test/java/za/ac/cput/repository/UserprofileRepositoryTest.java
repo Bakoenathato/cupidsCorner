@@ -1,4 +1,4 @@
-package za.ac.cput.repo;
+package za.ac.cput.repository;
 //UserprofileRepositoryTest.java
 //UserProfile Test class
 //Author:Braedon Sidney Mullins(222821825)
@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 class UserprofileRepositoryTest {
-    private final UserRepository repository=UserprofileRepository.getRepository();
+    private final IUserProfileRepository repository=UserprofileRepository.getRepository();
     private final UserProfile user= UserprofileFactory.createUser("Braedon","Mullins","Male", 21 ,"192037977239","Kuilsriver","Likes cars");
 
    @Test
