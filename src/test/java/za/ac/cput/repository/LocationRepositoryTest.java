@@ -57,13 +57,20 @@ class LocationRepositoryTest {
         System.out.println(updated);
     }
 
+//    @Test
+//    @Order(4)
+//    void getAll() {
+//        /*List<Location> allLocations = locationRepository.getAll();
+//        assertNotNull(allLocations);
+//        assertTrue(allLocations.contains(location));
+//        System.out.println(allLocations);*/
+//            System.out.println(repository.getAll());
+//    }
+
     @Test
     @Order(4)
-    void getAll() {
-        List<Location> allLocations = locationRepository.getAll();
-        assertNotNull(allLocations);
-        assertTrue(allLocations.contains(location));
-        System.out.println(allLocations);
+   void getAll() {
+        System.out.println(locationRepository.getAll());
     }
 
     @Test

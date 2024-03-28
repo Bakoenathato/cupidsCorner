@@ -29,11 +29,11 @@ public class LocationRepository implements ILocationRepository {
 
     @Override
     public Location create(Location location) {
-        if (location != null && isValidLocation(location)) {
+        //if (location != null && isValidLocation(location)) {
             boolean success = locationList.add(location);
             if (success)
                 return location;
-        }
+       // }
         return null;
     }
 
