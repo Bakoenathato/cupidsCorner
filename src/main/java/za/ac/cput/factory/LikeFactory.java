@@ -1,0 +1,24 @@
+package za.ac.cput.factory;
+
+import za.ac.cput.domain.Like;
+import za.ac.cput.util.Helper;
+
+import java.time.LocalDateTime;
+
+public class LikeFactory {
+    public static Like buildLike(String likeis, String likerid, String likedid, LocalDateTime liked_at) {
+        if (Helper.isNullOrEmpty(likeis) || Helper.isNullOrEmpty(likerid) || Helper.isNullOrEmpty(likedid) || Helper.isNullOrEmpty(String.valueOf(liked_at)))
+            return null;
+        return new Like.Builder().setLikeID(likeis).setLikerID(likerid).setLikedID(likedid).setLiked_at(liked_at).build();
+    }
+
+    public static Like buildLike(LocalDateTime liked_at) {
+        if (Helper.isNullOrEmpty(String.valueOf(liked_at)))
+            return null;
+        String likeis = Helper.generateId();
+        String likerid = Helper.generateId();
+        String likedid = Helper.generateId();
+        return new Like.Builder().setLikeID(likeis).setLikerID(likerid).setLikedID(likedid).setLiked_at(liked_at).build();
+
+    }
+}
