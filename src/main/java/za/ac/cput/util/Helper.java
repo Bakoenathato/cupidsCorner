@@ -13,8 +13,13 @@ public class Helper {
         return false;
     }
 
-
     public static String generateId(){
         return UUID.randomUUID().toString();
+    }
+
+    public static boolean isZero(int id){
+        if (id == 0)
+            return true;
+        return false;
     }
 }
