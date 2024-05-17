@@ -4,6 +4,9 @@ package za.ac.cput.repository;
 //Author:Braedon Sidney Mullins(222821825)
 //Date:27 March 2024
 
+import org.springframework.stereotype.Repository;
+
+@Deprecated
 public interface IRepository<T,ID> {
     T create(T t);
     T read(ID id);
