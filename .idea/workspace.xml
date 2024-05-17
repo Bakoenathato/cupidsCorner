@@ -4,12 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b3e52c4-b094-4fad-aad6-f5152687a85e" name="Changes" comment="What I have so far">
+    <list default="true" id="3b3e52c4-b094-4fad-aad6-f5152687a85e" name="Changes" comment="match and Preference">
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/MatchRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/PreferenceRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Rebasing_at_3_27_2024_10_24_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Rebasing_at_3_27_2024_10_24_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cupidsCorner.md" beforeDir="false" afterPath="$PROJECT_DIR$/cupidsCorner.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/UserProfileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/UserProfileRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/UserprofileFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/UserprofileFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Matching.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/MatchingFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/ChatRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/IChatRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/ILocationRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/IMatchingRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/INotificationRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/IRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/IRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/IUserProfileRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/IUserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/LocationRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/MatchingRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/NotificationRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/UserProfileRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/repository/MatchingRepositoryTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +39,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Class" />
         <option value="Interface" />
       </list>
     </option>
@@ -29,9 +47,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Bakoenathato&quot;
+  }
+}</component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
   </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Bakoenathato/cupidsCorner.git&quot;,
+    &quot;accountId&quot;: &quot;f307b826-897a-467d-98ac-9064719509c3&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -40,36 +70,126 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2dzags6eW3kYj66L0w2eejw3yGD" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/savuya/Library/CloudStorage/OneDrive-CapePeninsulaUniversityofTechnology/Third Year/ADP3/cupidsCorner",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LocationRepositoryTest.create.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LocationRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LocationRepositoryTest.getAll.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserprofileRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/savuya/Library/CloudStorage/OneDrive-CapePeninsulaUniversityofTechnology/Third Year/ADP3/cupidsCorner&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="za.ac.cput.repository" />
+      <recent name="za.ac.cput.factory" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.LocationRepositoryTest">
+    <configuration name="LocationRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cupidsCorner" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="za.ac.cput.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="za.ac.cput.repository" />
+      <option name="MAIN_CLASS_NAME" value="za.ac.cput.repository.LocationRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LocationRepositoryTest.getAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cupidsCorner" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="za.ac.cput.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="za.ac.cput.repository" />
+      <option name="MAIN_CLASS_NAME" value="za.ac.cput.repository.LocationRepositoryTest" />
+      <option name="METHOD_NAME" value="getAll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cupidsCorner" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="za.ac.cput.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="za.ac.cput.repository" />
+      <option name="MAIN_CLASS_NAME" value="za.ac.cput.repository.UserRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserprofileRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cupidsCorner" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="za.ac.cput.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="za.ac.cput.repository" />
+      <option name="MAIN_CLASS_NAME" value="za.ac.cput.repository.UserprofileRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.LocationRepositoryTest" />
+        <item itemvalue="JUnit.LocationRepositoryTest.getAll" />
+        <item itemvalue="JUnit.UserRepositoryTest" />
+        <item itemvalue="JUnit.UserprofileRepositoryTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
       </set>
     </attachedChunks>
   </component>
@@ -82,6 +202,14 @@
       <option name="presentableId" value="Default" />
       <updated>1711013475656</updated>
       <workItem from="1711013477584" duration="55000" />
+      <workItem from="1711650692681" duration="5000" />
+      <workItem from="1711660062706" duration="3803000" />
+      <workItem from="1712715224703" duration="675000" />
+      <workItem from="1712718720854" duration="644000" />
+      <workItem from="1713886951938" duration="7723000" />
+      <workItem from="1713928713920" duration="482000" />
+      <workItem from="1713929537342" duration="166000" />
+      <workItem from="1715949363941" duration="13186000" />
     </task>
     <task id="LOCAL-00001" summary="What I have so far">
       <option name="closed" value="true" />
@@ -115,14 +243,58 @@
       <option name="project" value="LOCAL" />
       <updated>1711578801433</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="What I have so far">
+      <option name="closed" value="true" />
+      <created>1711579281238</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1711579281238</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fixed errors">
+      <option name="closed" value="true" />
+      <created>1711662449561</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1711662449562</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fixed errors">
+      <option name="closed" value="true" />
+      <created>1711663276970</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1711663276970</updated>
+    </task>
+    <task id="LOCAL-00008" summary="pom file update">
+      <option name="closed" value="true" />
+      <created>1715949630821</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1715949630821</updated>
+    </task>
+    <task id="LOCAL-00009" summary="match and Preference">
+      <option name="closed" value="true" />
+      <created>1715973839447</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1715973839448</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="What I have so far" />
-    <option name="LAST_COMMIT_MESSAGE" value="What I have so far" />
+    <MESSAGE value="Fixed errors" />
+    <MESSAGE value="pom file update" />
+    <MESSAGE value="match and Preference" />
+    <option name="LAST_COMMIT_MESSAGE" value="match and Preference" />
   </component>
 </project>

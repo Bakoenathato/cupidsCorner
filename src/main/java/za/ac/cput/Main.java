@@ -1,21 +1,18 @@
 package za.ac.cput;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import za.ac.cput.domain.Chat;
 import za.ac.cput.domain.Notification;
 import za.ac.cput.factory.ChatFactory;
 import za.ac.cput.factory.NotificationFactory;
 
+
+@SpringBootApplication
 public class Main
 {
     public static void main(String[] args)
     {
-        /*Chat c = ChatFactory.createChat("Sibusiso", "Fanele",  "Hey,how you doing",  "15:03");
-
-        if (c !=null)
-            System.out.println(c.toString());
-
-        else System.out.println("Object not set");*/
-
-        System.out.println("Compile");
+        SpringApplication.run(Main.class, args);
     }
 }

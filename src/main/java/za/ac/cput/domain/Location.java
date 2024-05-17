@@ -4,7 +4,7 @@ import java.util.Objects;
 //author: Uzziah Phumelela Ngogela
 // 222135654
 
-public class Location {
+public class  Location {
     private String city;
     private String province;
     private String area;
