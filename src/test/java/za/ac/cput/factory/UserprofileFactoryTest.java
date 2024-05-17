@@ -20,6 +20,7 @@ class UserprofileFactoryTest {
     private User users;
     private Location location;
     private LocalDateTime x;
+   // private Prefernce prefernce;
 
 
     //private Helper x=new Helper();
@@ -28,10 +29,12 @@ class UserprofileFactoryTest {
         users=UserFactory.buildUser("BraedonMullisn01@gmail.com","1");
         location=LocationFactory.createLocation("","","");
         x=LocalDateTime.now();
+        //prefernce=PrefernceFactory.createPrefernce();
     }
     @Test
     void createUser() {
         UserProfile user= UserprofileFactory.createUser("1", users,"Female", "yes" ,x,location);
+        //UserProfile user= UserprofileFactory.createUser("1", users,"Female", "yes" ,x,location,prefrence);
         Boolean check=Helper.isNullOrEmpty(String.valueOf(user));
         assertNotNull(check);
         System.out.println(user);
@@ -42,6 +45,7 @@ class UserprofileFactoryTest {
     void testCreateUser() {
         String ID=Helper.generateId();
         UserProfile user= UserprofileFactory.createUser(ID,users,"Female","yes",x,location);
+        //UserProfile user= UserprofileFactory.createUser(ID,users,"Female","yes",x,location,prefernec);
         Boolean check=Helper.isNullOrEmpty(String.valueOf(user));
         assertNotNull(check);
         System.out.println(user);
