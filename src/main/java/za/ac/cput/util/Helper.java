@@ -4,6 +4,7 @@ package za.ac.cput.util;
 //Author:Braedon Sidney Mullins(222821825)
 //Date:27 March 2024
 
+import java.security.SecureRandom;
 import java.util.UUID;
 
 public class Helper {
@@ -21,5 +22,10 @@ public class Helper {
         if (id == 0)
             return true;
         return false;
+    }
+
+    public static Long generateLongId(){
+        SecureRandom secureRandom = new SecureRandom();
+        return Math.abs(secureRandom.nextLong());
     }
 }
