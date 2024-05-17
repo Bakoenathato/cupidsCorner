@@ -1,136 +1,140 @@
 package za.ac.cput.domain;
+
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.time.LocalDateTime;
+import java.util.Objects;
+
 //UserProfile.java
 //UserProfile model class
 //Author:Braedon Sidney Mullins(222821825)
 //Date:27 March 2024
-public class UserProfile {
-    private String Name;
-    private String Surname;
-    private String Gender;
-    private double Age;
-    private String ID;
-    private String Location;
-    private String Bio;
+@Entity
+@DiscriminatorValue("userprofilr")
+public class UserProfile  {
+    @Id
+    private String profileID;
+
+    protected User userID;
+    private String Intrests;
+    private String profile_visibility;
+    private LocalDateTime created_at;
+    @OneToMany
+    protected Location LocationID;
+
 
 
     public UserProfile() {
     }
 
-    private UserProfile(Builder builder) {
-        this.Name = builder.Name;
-        this.Surname = builder.Surname;
-        this.Gender = builder.Gender;
-        this.Age = builder.Age;
-        this.ID = builder.ID;
-        this.Location=builder.Location;
-        this.Bio= builder.Bio;;
+    protected UserProfile(Builder builder) {
+        this.profileID = builder.profileID;
+        this.userID = builder.userID;
+        this.Intrests = builder.Intrests;
+        this.profile_visibility = builder.profile_visibility;
+        this.created_at = builder.created_at;
+        this.LocationID=builder.LocationID;
+
 
     }
 
-//    public UserProfile(String name, String surname, String gender, int age, int ID) {
-//        Name = name;
-//        Surname = surname;
-//        Gender = gender;
-//        Age = age;
-//        this.ID = ID;
-//    }
-
-    public String getName() {
-        return Name;
+    public String getProfileID() {
+        return profileID;
     }
 
-    public String getSurname() {
-        return Surname;
+    public User getUserID() {
+        return userID;
     }
 
-    public String getGender() {
-        return Gender;
+    public String getIntrests() {
+        return Intrests;
     }
 
-    public double getAge() {
-        return Age;
+    public String getProfile_visibility() {
+        return profile_visibility;
     }
 
-    public String getID() {
-        return ID;
+    public LocalDateTime getCreated_at() {
+        return created_at;
     }
 
-    public String getLocation() {
-        return Location;
+    public Location getLocationID() {
+        return LocationID;
     }
 
-    public String getBio() {
-        return Bio;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserProfile that = (UserProfile) o;
+        return Objects.equals(profileID, that.profileID) && Objects.equals(userID, that.userID) && Objects.equals(Intrests, that.Intrests) && Objects.equals(profile_visibility, that.profile_visibility) && Objects.equals(created_at, that.created_at) && Objects.equals(LocationID, that.LocationID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(profileID, userID, Intrests, profile_visibility, created_at, LocationID);
     }
 
     @Override
     public String toString() {
         return "UserProfile{" +
-                "Name='" + Name + '\'' +
-                ", Surname='" + Surname + '\'' +
-                ", Gender='" + Gender + '\'' +
-                ", Age=" + Age +
-                ", ID='" + ID + '\'' +
-                ", Location='" + Location + '\'' +
-                ", Bio='" + Bio + '\'' +
+                "profileID='" + profileID + '\'' +
+                ", userID=" + userID +
+                ", Intrests='" + Intrests + '\'' +
+                ", profile_visibility='" + profile_visibility + '\'' +
+                ", created_at=" + created_at +
+                ", LocationID=" + LocationID +
                 '}';
     }
 
     public static class Builder {
-        private String Name;
-        private String Surname;
-        private String Gender;
-        private double Age;
-        private String ID;
-        private String Location;
-        private String Bio;
+        private String profileID;
+        private User userID;
+        private String Intrests;
+        private String profile_visibility;
+        private LocalDateTime created_at;
+        private Location LocationID;
 
-
-
-
-
-
-        public Builder setName(String Name) {
-        this.Name = Name;
-        return this;
-    }
-
-    public Builder setSurname(String Surname) {
-        this.Surname = Surname;
-        return this;
-    }
-
-    public Builder setGender(String Gender) {
-        this.Gender = Gender;
-        return this;
-    }
-
-    public Builder setAge(double Age) {
-        this.Age = Age;
-        return this;
-    }
-
-    public Builder setID(String ID) {
-        this.ID = ID;
-        return this;
-    }
-    public Builder setLocation(String Location){
-            this.Location=Location;
+        public Builder setProfileID(String profileID) {
+            this.profileID = profileID;
             return this;
-    }
-    public Builder setBio(String Bio){
-            this.Bio=Bio;
-            return this;
-    }
+        }
 
-    public Builder copy(UserProfile e) {
-        this.Name = e.Name;
-        this.Surname = e.Surname;
-        this.Gender = e.Gender;
-        this.Age = e.Age;
-        this.ID = e.ID;
-        this.Location= e.Location;
-        this.Bio=e.Bio;
+        public Builder setUserID(User userID) {
+            this.userID = userID;
+            return this;
+        }
+
+        public Builder setIntrests(String intrests) {
+            Intrests = intrests;
+            return this;
+        }
+
+        public Builder setProfile_visibility(String profile_visibility) {
+            this.profile_visibility = profile_visibility;
+            return this;
+        }
+
+        public Builder setCreated_at(LocalDateTime created_at) {
+            this.created_at = created_at;
+            return this;
+        }
+
+        public Builder setLocationID(Location locationID) {
+            LocationID = locationID;
+            return this;
+        }
+
+        public Builder copy(UserProfile e) {
+        this.profileID = e.profileID;
+        this.userID = e.userID;
+        this.Intrests = e.Intrests;
+        this.profile_visibility = e.profile_visibility;
+        this.created_at = e.created_at;
+        this.LocationID= e.LocationID;
         return this;
     }
 
