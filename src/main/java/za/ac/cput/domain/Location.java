@@ -1,23 +1,37 @@
 package za.ac.cput.domain;
 
 import java.util.Objects;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 //author: Uzziah Phumelela Ngogela
 // 222135654
 
+
+
+import java.util.Objects;
+
+@Entity
 public class Location {
+    @Id
+    private int postalCode;
     private String city;
     private String province;
     private String area;
 
-
-    private Location () {}
+    @OneToOne(cascade = CascadeType.ALL)
+    protected Location() {}
 
     private Location(Builder builder) {
+        this.postalCode = builder.postalCode;
         this.city = builder.city;
         this.province = builder.province;
         this.area = builder.area;
     }
 
+    public int getPostalCode() {
+        return postalCode;
+    }
 
     public String getCity() {
         return city;
@@ -27,7 +41,7 @@ public class Location {
         return province;
     }
 
-    public String getLocationArea() {
+    public String getArea() {
         return area;
     }
 
@@ -36,27 +50,37 @@ public class Location {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Location location = (Location) o;
-        return Objects.equals(city, location.city) && Objects.equals(province, location.province) && Objects.equals(area, location.area);
+        return postalCode == location.postalCode &&
+                Objects.equals(city, location.city) &&
+                Objects.equals(province, location.province) &&
+                Objects.equals(area, location.area);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(city, province, area);
+        return Objects.hash(postalCode, city, province, area);
     }
 
     @Override
     public String toString() {
         return "Location{" +
-                "city='" + city + '\'' +
+                "postalCode=" + postalCode +
+                ", city='" + city + '\'' +
                 ", province='" + province + '\'' +
-                ", lastName='" + area + '\'' +
+                ", area='" + area + '\'' +
                 '}';
     }
 
     public static class Builder {
+        private int postalCode;
         private String city;
         private String province;
         private String area;
+
+        public Builder setPostalCode(int postalCode) {
+            this.postalCode = postalCode;
+            return this;
+        }
 
         public Builder setCity(String city) {
             this.city = city;
@@ -73,14 +97,16 @@ public class Location {
             return this;
         }
 
-        public Builder copy(Location e) {
-            this.city = e.city;
-            this.province = e.province;
-            this.area = e.area;
+        public Builder copy(Location location) {
+            this.postalCode = location.postalCode;
+            this.city = location.city;
+            this.province = location.province;
+            this.area = location.area;
             return this;
         }
 
-        public Location build() { return new Location(this);}
+        public Location build() {
+            return new Location(this);
+        }
     }
 }
-
