@@ -18,12 +18,13 @@ public class UserProfile  {
     @Id
     private String profileID;
 
-    protected User userID;
+    private User userID;
     private String Intrests;
     private String profile_visibility;
     private LocalDateTime created_at;
     @OneToMany
     protected Location LocationID;
+    private Prefernce prefernceID;
 
 
 
@@ -37,6 +38,7 @@ public class UserProfile  {
         this.profile_visibility = builder.profile_visibility;
         this.created_at = builder.created_at;
         this.LocationID=builder.LocationID;
+        this.prefernceID= builder.prefernceID;;
 
 
     }
@@ -65,17 +67,21 @@ public class UserProfile  {
         return LocationID;
     }
 
+    public Prefernce getPrefernceID() {
+        return prefernceID;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserProfile that = (UserProfile) o;
-        return Objects.equals(profileID, that.profileID) && Objects.equals(userID, that.userID) && Objects.equals(Intrests, that.Intrests) && Objects.equals(profile_visibility, that.profile_visibility) && Objects.equals(created_at, that.created_at) && Objects.equals(LocationID, that.LocationID);
+        return Objects.equals(profileID, that.profileID) && Objects.equals(userID, that.userID) && Objects.equals(Intrests, that.Intrests) && Objects.equals(profile_visibility, that.profile_visibility) && Objects.equals(created_at, that.created_at) && Objects.equals(LocationID, that.LocationID) && Objects.equals(prefernceID, that.prefernceID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(profileID, userID, Intrests, profile_visibility, created_at, LocationID);
+        return Objects.hash(profileID, userID, Intrests, profile_visibility, created_at, LocationID, prefernceID);
     }
 
     @Override
@@ -87,6 +93,7 @@ public class UserProfile  {
                 ", profile_visibility='" + profile_visibility + '\'' +
                 ", created_at=" + created_at +
                 ", LocationID=" + LocationID +
+                ", prefernceID=" + prefernceID +
                 '}';
     }
 
@@ -97,6 +104,7 @@ public class UserProfile  {
         private String profile_visibility;
         private LocalDateTime created_at;
         private Location LocationID;
+        private Prefernce prefernceID;
 
         public Builder setProfileID(String profileID) {
             this.profileID = profileID;
@@ -128,6 +136,11 @@ public class UserProfile  {
             return this;
         }
 
+        public Builder setPrefernceID(Prefernce prefernceID) {
+            this.prefernceID = prefernceID;
+            return this;
+        }
+
         public Builder copy(UserProfile e) {
         this.profileID = e.profileID;
         this.userID = e.userID;
@@ -135,6 +148,7 @@ public class UserProfile  {
         this.profile_visibility = e.profile_visibility;
         this.created_at = e.created_at;
         this.LocationID= e.LocationID;
+        this.prefernceID=e.prefernceID;
         return this;
     }
 
