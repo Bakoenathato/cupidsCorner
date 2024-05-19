@@ -10,10 +10,10 @@ import java.util.Objects;
 @Entity
 public class Gender {
     @Id
-    private String genderId;
+    private Long genderId;
     private String description;
 
-    @OneToOne(mappedBy = "Gender", cascade = CascadeType.ALL)
+
 
 
     protected Gender() {}
@@ -23,7 +23,7 @@ public class Gender {
         this.description = builder.description;
     }
 
-    public String getGenderId() {
+    public Long getGenderId() {
         return genderId;
     }
 
@@ -54,10 +54,10 @@ public class Gender {
     }
 
     public static class Builder {
-        private String genderId;
+        private Long genderId;
         private String description;
 
-        public Builder setGenderId(String genderId) {
+        public Builder setGenderId(Long genderId) {
             this.genderId = genderId;
             return this;
         }

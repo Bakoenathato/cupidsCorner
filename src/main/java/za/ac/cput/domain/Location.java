@@ -1,18 +1,19 @@
 package za.ac.cput.domain;
-//author: Uzziah Phumelela Ngogela
+
+// author: Uzziah Phumelela Ngogela
 // 222135654
 
 import java.util.Objects;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
-import java.util.Objects;
+import jakarta.persistence.CascadeType;
 
 @Entity
 public class Location {
-  
+
     @Id
-    private int postalCode;
+    private Long postalCode;
     private String city;
     private String province;
     private String area;
@@ -27,7 +28,7 @@ public class Location {
         this.area = builder.area;
     }
 
-    public int getPostalCode() {
+    public Long getPostalCode() {
         return postalCode;
     }
 
@@ -48,7 +49,7 @@ public class Location {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Location location = (Location) o;
-        return postalCode == location.postalCode &&
+        return Objects.equals(postalCode, location.postalCode) &&
                 Objects.equals(city, location.city) &&
                 Objects.equals(province, location.province) &&
                 Objects.equals(area, location.area);
@@ -70,12 +71,12 @@ public class Location {
     }
 
     public static class Builder {
-        private int postalCode;
+        private Long postalCode;
         private String city;
         private String province;
         private String area;
 
-        public Builder setPostalCode(int postalCode) {
+        public Builder setPostalCode(Long postalCode) {
             this.postalCode = postalCode;
             return this;
         }
