@@ -1,42 +1,30 @@
 package za.ac.cput.factory;
 
-/* NotificationFactory.java
-   NotificationFactory model class
-   Author: Leonard Gabriel Langa (221069054)
-   Date: 23 March 2024
-*/
-
 import za.ac.cput.domain.Notification;
+import za.ac.cput.domain.NotificationType;
 import za.ac.cput.util.Helper;
 
-public class NotificationFactory
-{
-    public static Notification buildNotification(String notificationId, String content, String notificationType, String receiveId, String senderId, String associatedEntityId)
-    {
-        if (Helper.isNullOrEmpty(notificationId) || Helper.isNullOrEmpty(content) || Helper.isNullOrEmpty(notificationType) || Helper.isNullOrEmpty(senderId) || Helper.isNullOrEmpty(receiveId) || Helper.isNullOrEmpty(associatedEntityId))
+public class NotificationFactory {
+    public static Notification buildNotification(long notificationId, String content,
+                                                 NotificationType type, UserProfile userProfile){
+        if(Helper.isZeroOrLess(notificationId) || Helper.isNullOrEmpty(content) || type == null || userProfile == null)
             return null;
-
         return new Notification.Builder().setNotificationId(notificationId)
                 .setContent(content)
-                .setNotificationType(notificationType)
-                .setSenderId(senderId)
-                .setReceiverId(receiveId)
-                .setAssociatedEntityId(associatedEntityId)
+                .setType(type)
+                .setUserProfile(userProfile)
                 .build();
     }
 
-    public static Notification buildNotification(String content, String notificationType, String receiverId, String senderId, String associatedEntityId)
-    {
-        if (Helper.isNullOrEmpty(content) || Helper.isNullOrEmpty(notificationType) || Helper.isNullOrEmpty(senderId) || Helper.isNullOrEmpty(receiverId) || Helper.isNullOrEmpty(associatedEntityId))
+    public static Notification buildNotification(String content, NotificationType type, UserProfile userProfile){
+        if (Helper.isNullOrEmpty(content) || type == null || userProfile == null)
             return null;
 
-        String notificationId = Helper.generateId();
+        long notificationId = Helper.generateLongId();
         return new Notification.Builder().setNotificationId(notificationId)
                 .setContent(content)
-                .setNotificationType(notificationType)
-                .setSenderId(senderId)
-                .setReceiverId(receiverId)
-                .setAssociatedEntityId(associatedEntityId)
+                .setType(type)
+                .setUserProfile(userProfile)
                 .build();
     }
 
