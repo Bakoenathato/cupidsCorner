@@ -1,4 +1,10 @@
 package za.ac.cput.service;
+/* NotificationServiceTest.java
+NotificationServiceTest class
+Author: Leonard Gabriel Langa (221069054)
+Date: 17 May 2024
+*/
+
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;

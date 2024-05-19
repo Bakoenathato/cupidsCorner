@@ -1,4 +1,10 @@
 package za.ac.cput.service;
+/* ReportService.java
+ReportService class
+Author: Leonard Gabriel Langa (221069054)
+Date: 17 May 2024
+*/
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

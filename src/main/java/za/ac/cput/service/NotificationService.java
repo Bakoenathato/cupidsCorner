@@ -1,5 +1,12 @@
 package za.ac.cput.service;
 
+/* NotificationService.java
+NotificationService class
+Author: Leonard Gabriel Langa (221069054)
+Date: 17 May 2024
+*/
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Notification;
