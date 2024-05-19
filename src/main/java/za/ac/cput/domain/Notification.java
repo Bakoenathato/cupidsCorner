@@ -1,98 +1,77 @@
 package za.ac.cput.domain;
 
-/* Notification.java
-   Notification model class
-   Author: Leonard Gabriel Langa (221069054)
-   Date: 23 March 2024
-*/
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
+@Entity
 public class Notification
 {
-    private String notificationId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long notificationId;
     private String content;
-    private String notificationType;
-    private String receiverId;
-    private String senderId;
-    private String associatedEntityId;
+    private NotificationType type;
 
-    private Notification(){}
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profileId")
+    @Column(name = "notificationReceiverId")
+    private UserProfile userProfile;
 
-    private Notification(Builder builder)
-    {
+    protected Notification(){}
+
+    private Notification(Builder builder) {
         this.notificationId = builder.notificationId;
         this.content = builder.content;
-        this.notificationType = builder.notificationType;
-        this.receiverId = builder.receiverId;
-        this.senderId = builder.senderId;
-        this.associatedEntityId = builder.associatedEntityId;
+        this.type = builder.type;
+        this.userProfile = builder.userProfile;
     }
 
-    public String getNotificationId()
-    {
+    public long getNotificationId() {
         return notificationId;
     }
 
-    public String getContent()
-    {
+    public String getContent() {
         return content;
     }
 
-    public String getNotificationType()
-    {
-        return notificationType;
+    public NotificationType getType() {
+        return type;
     }
 
-    public String getReceiverId()
-    {
-        return receiverId;
-    }
-
-    public String getSenderId()
-    {
-        return senderId;
-    }
-
-    public String getAssociatedEntityId()
-    {
-        return associatedEntityId;
+    public UserProfile getUserProfile() {
+        return userProfile;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Notification that)) return false;
-        return Objects.equals(notificationId, that.notificationId) && Objects.equals(content, that.content) && Objects.equals(notificationType, that.notificationType) && Objects.equals(receiverId, that.receiverId) && Objects.equals(senderId, that.senderId) && Objects.equals(associatedEntityId, that.associatedEntityId);
+        return notificationId == that.notificationId && Objects.equals(content, that.content) && type == that.type && Objects.equals(userProfile, that.userProfile);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(notificationId, content, notificationType, receiverId, senderId, associatedEntityId);
+        return Objects.hash(notificationId, content, type, userProfile);
     }
 
     @Override
     public String toString() {
         return "Notification{" +
-                "notificationId='" + notificationId + '\'' +
+                "notificationId=" + notificationId +
                 ", content='" + content + '\'' +
-                ", notificationType='" + notificationType + '\'' +
-                ", receiverId='" + receiverId + '\'' +
-                ", senderId='" + senderId + '\'' +
-                ", associatedEntityId='" + associatedEntityId + '\'' +
+                ", type=" + type +
+                ", userProfile=" + userProfile +
                 '}';
     }
 
-    public static class Builder
-    {
-        private String notificationId;
+    public static class Builder{
+        private long notificationId;
         private String content;
-        private String notificationType;
-        private String receiverId;
-        private String senderId;
-        private String associatedEntityId;
+        private NotificationType type;
+        private UserProfile userProfile;
 
-        public Builder setNotificationId(String notificationId) {
+        public Builder setNotificationId(long notificationId) {
             this.notificationId = notificationId;
             return this;
         }
@@ -102,39 +81,26 @@ public class Notification
             return this;
         }
 
-        public Builder setNotificationType(String notificationType) {
-            this.notificationType = notificationType;
+        public Builder setType(NotificationType type) {
+            this.type = type;
             return this;
         }
 
-        public Builder setReceiverId(String receiverId) {
-            this.receiverId = receiverId;
+        public Builder setUserProfile(UserProfile userProfile) {
+            this.userProfile = userProfile;
             return this;
         }
 
-        public Builder setSenderId(String senderId) {
-            this.senderId = senderId;
+        public Builder copy(Notification notification){
+            this.notificationId = notification.notificationId;
+            this.content = notification.content;
+            this.type = notification.type;
+            this.userProfile = notification.userProfile;
             return this;
         }
 
-        public Builder setAssociatedEntityId(String associatedEntityId) {
-            this.associatedEntityId = associatedEntityId;
-            return this;
+        public Notification build(){
+            return new Notification(this);
         }
-
-        public Builder copy(Notification n)
-        {
-            this.notificationId = n.notificationId;
-            this.content = n.content;
-            this.notificationType = n.notificationType;
-            this.receiverId = n.receiverId;
-            this.senderId = n.senderId;
-            this.associatedEntityId = n.associatedEntityId;
-            return this;
-        }
-
-        public Notification build(){return new Notification(this);}
     }
-
-
 }

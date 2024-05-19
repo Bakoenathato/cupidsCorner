@@ -1,18 +1,16 @@
 package za.ac.cput.domain;
+//author: Uzziah Phumelela Ngogela
+// 222135654
 
 import java.util.Objects;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
-//author: Uzziah Phumelela Ngogela
-// 222135654
-
-
-
 import java.util.Objects;
 
 @Entity
 public class Location {
+  
     @Id
     private int postalCode;
     private String city;

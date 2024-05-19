@@ -2,8 +2,8 @@ package za.ac.cput.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import za.ac.cput.domain.Notification;
+import za.ac.cput.domain.Report;
 
 @Repository
-public interface NotificationRepository extends JpaRepository<Notification,Long> {
+public interface ReportRepository extends JpaRepository<Report,Long> {
 }

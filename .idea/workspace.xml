@@ -4,8 +4,6 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b3e52c4-b094-4fad-aad6-f5152687a85e" name="Changes" comment="What I have so far">
-      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/UserProfileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/UserProfileRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,9 +24,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Bakoenathato&quot;
+  }
+}</component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
   </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Bakoenathato/cupidsCorner.git&quot;,
+    &quot;accountId&quot;: &quot;f307b826-897a-467d-98ac-9064719509c3&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -40,49 +50,36 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2dzags6eW3kYj66L0w2eejw3yGD" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/UZZI/IdeaProjects/cupidsCornerr",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="za.ac.cput.factory" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
+
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
+
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -100,8 +97,7 @@
       <option name="presentableId" value="Default" />
       <updated>1711013475656</updated>
       <workItem from="1711013477584" duration="55000" />
-      <workItem from="1715976988501" duration="220000" />
-      <workItem from="1715977639745" duration="5154000" />
+
     </task>
     <task id="LOCAL-00001" summary="What I have so far">
       <option name="closed" value="true" />
@@ -137,28 +133,18 @@
     </task>
     <task id="LOCAL-00005" summary="What I have so far">
       <option name="closed" value="true" />
-      <created>1715982427763</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1715982427766</updated>
-    </task>
-    <task id="LOCAL-00006" summary="What I have so far">
-      <option name="closed" value="true" />
-      <created>1715982455890</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1715982455890</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="What I have so far" />
-    <option name="LAST_COMMIT_MESSAGE" value="What I have so far" />
+    <MESSAGE value="Fixed errors" />
+    <MESSAGE value="pom file update" />
+    <MESSAGE value="match and Preference" />
+    <option name="LAST_COMMIT_MESSAGE" value="match and Preference" />
   </component>
 </project>

@@ -6,6 +6,7 @@ package za.ac.cput.factory;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import za.ac.cput.domain.Like;
 import za.ac.cput.domain.Location;
 import za.ac.cput.domain.User;
 import za.ac.cput.domain.UserProfile;
@@ -20,6 +21,8 @@ class UserprofileFactoryTest {
     private User users;
     private Location location;
     private LocalDateTime x;
+   // private Preference preference;
+    private Like like;
 
 
     //private Helper x=new Helper();
@@ -28,10 +31,14 @@ class UserprofileFactoryTest {
         users=UserFactory.buildUser("BraedonMullisn01@gmail.com","1");
         location=LocationFactory.createLocation("","","");
         x=LocalDateTime.now();
+        //prefernce=PrefernceFactory.createPrefernce();
+        Like like=LikeFactory.buildLike("1","01","001",LocalDateTime.now());
+
     }
     @Test
     void createUser() {
-        UserProfile user= UserprofileFactory.createUser("1", users,"Female", "yes" ,x,location);
+        UserProfile user= UserprofileFactory.createUser("1", users,"Female", true ,x,location,like);
+        //UserProfile user= UserprofileFactory.createUser("1", users,"Female", "yes" ,x,location,preference,like);
         Boolean check=Helper.isNullOrEmpty(String.valueOf(user));
         assertNotNull(check);
         System.out.println(user);
@@ -41,7 +48,8 @@ class UserprofileFactoryTest {
     @Test
     void testCreateUser() {
         String ID=Helper.generateId();
-        UserProfile user= UserprofileFactory.createUser(ID,users,"Female","yes",x,location);
+        UserProfile user= UserprofileFactory.createUser(ID,users,"Female",true,x,location);
+        //UserProfile user= UserprofileFactory.createUser(ID,users,"Female","yes",x,location,preference,like);
         Boolean check=Helper.isNullOrEmpty(String.valueOf(user));
         assertNotNull(check);
         System.out.println(user);
