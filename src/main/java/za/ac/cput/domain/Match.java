@@ -20,11 +20,11 @@ public class Match {
     private int matchId;
 
     @ManyToOne
-    @JoinColumn(name = "profileID_1", referencedColumnName = "profileID")
+    @JoinColumn(name = "profileID_1")
     private UserProfile profile1;
 
     @ManyToOne
-    @JoinColumn(name = "profileID_2", referencedColumnName = "profileID")
+    @JoinColumn(name = "profileID_2")
     private UserProfile profile2;
 
     protected Match() {
