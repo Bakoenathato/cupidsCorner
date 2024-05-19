@@ -26,4 +26,16 @@ public class PreferenceFactory {
     }
 
 
+    public static Preference buildPreference(int preferenceId, String ageRange, String distance, String genderPreference){
+        if (Helper.isZero(preferenceId) || Helper.isNullOrEmpty(ageRange) || Helper.isNullOrEmpty(distance) || Helper.isNullOrEmpty(genderPreference)) {
+            return null;
+        }
+
+        return new Preference.Builder()
+                .setPreferenceId(preferenceId)
+                .setAgeRange(ageRange)
+                .setDistance(distance)
+                .setGenderPreference(genderPreference)
+                .build();
+    }
 }

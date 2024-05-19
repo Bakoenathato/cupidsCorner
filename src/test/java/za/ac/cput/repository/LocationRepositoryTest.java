@@ -1,83 +1,107 @@
 package za.ac.cput.repository;
 
-/* LocationRepositoryTest.java
-   LocationRepositoryTest class
-   Author: Uzzaih Phumelela Ngogela 222135654
-   Date: 26 March 2024
-*/
-
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import za.ac.cput.domain.Location;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class LocationRepositoryTest {
+@DataJpaTest
+public class LocationRepositoryTest {
 
-    private final ILocationRepository locationRepository = LocationRepository.getRepository();
-
-    private Location location = new Location.Builder()
-            .setCity("Cape Town")
-            .setProvince("Western Cape")
-            .setArea("Bellville")
-            .build();
+    @Autowired
+    private LocationRepository repository;
 
     @Test
-    @Order(1)
-    void create() {
-        Location created = locationRepository.create(location);
-        assertNotNull(created);
-        assertEquals(location, created);
-        System.out.println(created);
-    }
-
-    @Test
-    @Order(2)
-    void read() {
-        Location readLocation = locationRepository.read("Cape Town");
-        assertNotNull(readLocation);
-        assertEquals(location, readLocation);
-        System.out.println(readLocation);
-    }
-
-    @Test
-    @Order(3)
-    void update() {
-        Location updatedLocation = new Location.Builder()
+    public void testCreateLocation() {
+        Location location = new Location.Builder()
+                .setPostalCode(7700)
                 .setCity("Cape Town")
                 .setProvince("Western Cape")
-                .setArea("Langa")
+                .setArea("Central")
                 .build();
 
-        Location updated = locationRepository.update(updatedLocation);
-        assertNotNull(updated);
-        assertEquals(updatedLocation, updated);
-        System.out.println(updated);
-    }
-
-//    @Test
-//    @Order(4)
-//    void getAll() {
-//        /*List<Location> allLocations = locationRepository.getAll();
-//        assertNotNull(allLocations);
-//        assertTrue(allLocations.contains(location));
-//        System.out.println(allLocations);*/
-//            System.out.println(repository.getAll());
-//    }
-
-    @Test
-    @Order(4)
-   void getAll() {
-        System.out.println(locationRepository.getAll());
+        Location savedLocation = repository.save(location);
+        assertNotNull(savedLocation);
+        assertEquals(location.getPostalCode(), savedLocation.getPostalCode());
     }
 
     @Test
-    @Order(5)
-    void delete() {
-        assertTrue(locationRepository.delete("Cape Town"));
-        assertNull(locationRepository.read("Cape Town"));
-        System.out.println("Success: Location deleted");
+    public void testReadLocation() {
+        Location location = new Location.Builder()
+                .setPostalCode(4311)
+                .setCity("Johannesburg")
+                .setProvince("Gauteng")
+                .setArea("Sandton")
+                .build();
+
+        repository.save(location);
+
+        Optional<Location> foundLocation = repository.findById(67890L);
+        assertTrue(foundLocation.isPresent());
+        assertEquals(location.getCity(), foundLocation.get().getCity());
+    }
+
+    @Test
+    public void testUpdateLocation() {
+        Location location = new Location.Builder()
+                .setPostalCode(54321L)
+                .setCity("Durban")
+                .setProvince("KwaZulu-Natal")
+                .setArea("Beachfront")
+                .build();
+
+        repository.save(location);
+
+        Location updatedLocation = new Location.Builder()
+                .copy(location)
+                .setCity("Updated City")
+                .build();
+
+        Location savedUpdatedLocation = repository.save(updatedLocation);
+        assertEquals("Updated City", savedUpdatedLocation.getCity());
+    }
+
+    @Test
+    public void testDeleteLocation() {
+        Location location = new Location.Builder()
+                .setPostalCode(4311)
+                .setCity("Pretoria")
+                .setProvince("Gauteng")
+                .setArea("Arcadia")
+                .build();
+
+        repository.save(location);
+        repository.deleteById(4311);
+
+        Optional<Location> deletedLocation = repository.findById(98765L);
+        assertFalse(deletedLocation.isPresent());
+    }
+
+    @Test
+    public void testGetAllLocations() {
+        Location location1 = new Location.Builder()
+                .setPostalCode(1111)
+                .setCity("Johannesburg")
+                .setProvince("Gauteng")
+                .setArea("Daveyton")
+                .build();
+
+        Location location2 = new Location.Builder()
+                .setPostalCode(7041)
+                .setCity("Port Elizabeth")
+                .setProvince("Eastern Cape")
+                .setArea("Summerstrand")
+                .build();
+
+        repository.save(location1);
+        repository.save(location2);
+
+        List<Location> locations = repository.findAll();
+        assertEquals(2, locations.size());
     }
 }

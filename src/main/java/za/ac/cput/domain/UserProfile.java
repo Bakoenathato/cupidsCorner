@@ -4,22 +4,30 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.Set;
 
 //UserProfile.java
 //UserProfile model class
 //Author:Braedon Sidney Mullins(222821825)
 //Date:27 March 2024
+
+
 @Entity
 @DiscriminatorValue("userprofile")
 public class UserProfile  {
     @Id
     private String profileID;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userID")
     private User userID;
-    private String Intrests;
+
+    private String Interests;
+
     private boolean profile_visibility;
+
     private LocalDateTime created_at;
+
     @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
     protected Location LocationID;
 
@@ -31,8 +39,11 @@ public class UserProfile  {
     @JoinColumn(name = "likeID")
     private Like likes;
 
+    @OneToMany(mappedBy = "profile1")
+    private Set<Match> matchRequest;
 
-
+    @OneToMany(mappedBy = "profile2")
+    private Set<Match> matchedAccepted;
 
     public UserProfile() {
     }
@@ -40,14 +51,14 @@ public class UserProfile  {
     protected UserProfile(Builder builder) {
         this.profileID = builder.profileID;
         this.userID = builder.userID;
-        this.Intrests = builder.Intrests;
+        this.Interests = builder.Interests;
         this.profile_visibility = builder.profile_visibility;
         this.created_at = builder.created_at;
         this.LocationID=builder.LocationID;
         this.preferenceID= builder.preferenceID;;
         this.likes=builder.likes;
-
-
+        this.matchRequest = builder.matchRequest;
+        this.matchedAccepted = builder.matchedAccepted;
     }
 
     public String getProfileID() {
@@ -58,8 +69,8 @@ public class UserProfile  {
         return userID;
     }
 
-    public String getIntrests() {
-        return Intrests;
+    public String getInterests() {
+        return Interests;
     }
 
     public boolean getProfile_visibility() {
@@ -74,12 +85,24 @@ public class UserProfile  {
         return LocationID;
     }
 
-    public Preference getPrefernceID() {
+    public Like getLikes() {
+        return likes;
+    }
+
+    public boolean isProfile_visibility() {
+        return profile_visibility;
+    }
+
+    public Preference getPreferenceID() {
         return preferenceID;
     }
 
-    public Likes getLikes() {
-        return likes;
+    public Set<Match> getMatchRequest() {
+        return matchRequest;
+    }
+
+    public Set<Match> getMatchedAccepted() {
+        return matchedAccepted;
     }
 
     @Override
@@ -87,12 +110,12 @@ public class UserProfile  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserProfile that = (UserProfile) o;
-        return profile_visibility == that.profile_visibility && Objects.equals(profileID, that.profileID) && Objects.equals(userID, that.userID) && Objects.equals(Intrests, that.Intrests) && Objects.equals(created_at, that.created_at) && Objects.equals(LocationID, that.LocationID) && Objects.equals(preferenceID, that.preferenceID) && Objects.equals(likes, that.likes);
+        return profile_visibility == that.profile_visibility && Objects.equals(profileID, that.profileID) && Objects.equals(userID, that.userID) && Objects.equals(Interests, that.Interests) && Objects.equals(created_at, that.created_at) && Objects.equals(LocationID, that.LocationID) && Objects.equals(preferenceID, that.preferenceID) && Objects.equals(likes, that.likes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(profileID, userID, Intrests, profile_visibility, created_at, LocationID, preferenceID, likes);
+        return Objects.hash(profileID, userID, Interests, profile_visibility, created_at, LocationID, preferenceID, likes);
     }
 
     @Override
@@ -100,7 +123,7 @@ public class UserProfile  {
         return "UserProfile{" +
                 "profileID='" + profileID + '\'' +
                 ", userID=" + userID +
-                ", Intrests='" + Intrests + '\'' +
+                ", Interests='" + Interests + '\'' +
                 ", profile_visibility=" + profile_visibility +
                 ", created_at=" + created_at +
                 ", LocationID=" + LocationID +
@@ -112,12 +135,14 @@ public class UserProfile  {
     public static class Builder {
         private String profileID;
         private User userID;
-        private String Intrests;
+        private String Interests;
         private boolean profile_visibility;
         private LocalDateTime created_at;
         private Location LocationID;
         private Preference preferenceID;
         private Like likes;
+        private Set<Match> matchRequest;
+        private Set<Match> matchedAccepted;
 
         public Builder setProfileID(String profileID) {
             this.profileID = profileID;
@@ -129,8 +154,8 @@ public class UserProfile  {
             return this;
         }
 
-        public Builder setIntrests(String intrests) {
-            Intrests = intrests;
+        public Builder setInterests(String interests) {
+            Interests = interests;
             return this;
         }
 
@@ -149,25 +174,37 @@ public class UserProfile  {
             return this;
         }
 
-        public Builder setPrefernceID(Preference preferenceID) {
+        public Builder setPreferenceID(Preference preferenceID) {
             this.preferenceID = preferenceID;
             return this;
         }
 
         public Builder setLikes(Like likes) {
             this.likes = likes;
-            return this
+            return this;
+        }
+
+        public Builder setMatchRequest(Set<Match> matchRequest) {
+            this.matchRequest = matchRequest;
+            return this;
+        }
+
+        public Builder setMatchedAccepted(Set<Match> matchedAccepted) {
+            this.matchedAccepted = matchedAccepted;
+            return this;
         }
 
         public Builder copy(UserProfile e) {
         this.profileID = e.profileID;
         this.userID = e.userID;
-        this.Intrests = e.Intrests;
+        this.Interests = e.Interests;
         this.profile_visibility = e.profile_visibility;
         this.created_at = e.created_at;
         this.LocationID= e.LocationID;
         this.preferenceID=e.preferenceID;
         this.likes=e.likes;
+        this.matchRequest=e.matchRequest;
+        this.matchedAccepted=e.matchedAccepted;
         return this;
     }
 
