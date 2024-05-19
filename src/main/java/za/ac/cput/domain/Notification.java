@@ -1,5 +1,11 @@
 package za.ac.cput.domain;
 
+/* Notification.java
+Notification model class
+Author: Leonard Gabriel Langa (221069054)
+Date: 17 May 2024
+*/
+
 import jakarta.persistence.*;
 
 import java.util.Objects;
