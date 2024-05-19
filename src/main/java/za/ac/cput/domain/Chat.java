@@ -1,7 +1,7 @@
 package za.ac.cput.domain;
 
 //nasiphi sunduza 222499028
-import jakarta.persistence.*;import jakarta.persistence.*;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 

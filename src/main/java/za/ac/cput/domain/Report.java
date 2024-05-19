@@ -1,5 +1,11 @@
 package za.ac.cput.domain;
 
+/* Report.java
+Report model class
+Author: Leonard Gabriel Langa (221069054)
+Date: 17 May 2024
+*/
+
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -19,12 +25,12 @@ public class Report
     private LocalDateTime reportedAt;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profileId")
+    @JoinColumn(name = "profileID")
     @Column(name = "reportingUserId")
     private UserProfile userProfileReporter;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profileId")
+    @JoinColumn(name = "profileID")
     @Column(name = "reportedUserId")
     private UserProfile userProfileReported;
 
