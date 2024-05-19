@@ -10,9 +10,9 @@ import java.util.List;
 public interface BlockRepository extends JpaRepository<Block, String> {
 
 
-    //List<Block> findByBlocker(String blocker);
-    //List<Block> findByBlocked(String blocked);
-   // List<Block> findByBlockerAndBlocked(String blocker, String blocked);
+    List<Block> findByBlocker(String blocker);
+    List<Block> findByBlocked(String blocked);
+    List<Block> findByBlockerAndBlocked(String blocker, String blocked);
 
 
 }

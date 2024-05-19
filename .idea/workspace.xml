@@ -5,12 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b3e52c4-b094-4fad-aad6-f5152687a85e" name="Changes" comment="match and Preference">
-      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Block.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/BlockFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/BlockRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/ChatRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/BlockService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/ChatService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/IBlockService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/IChatService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/service/IService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/BlockFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/repository/BlockRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/BlockServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/service/ChatServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/domain/Chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/ChatFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/factory/ChatFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/BlockRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/repository/BlockRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/ChatFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/factory/ChatFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/repository/ChatRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/repository/ChatRepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +30,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -193,7 +200,7 @@
       <workItem from="1713928713920" duration="482000" />
       <workItem from="1713929537342" duration="166000" />
       <workItem from="1715949363941" duration="13186000" />
-      <workItem from="1715978375688" duration="1976000" />
+      <workItem from="1715978375688" duration="18619000" />
     </task>
     <task id="LOCAL-00001" summary="What I have so far">
       <option name="closed" value="true" />
