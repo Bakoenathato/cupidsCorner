@@ -28,4 +28,10 @@ public class Helper {
         SecureRandom secureRandom = new SecureRandom();
         return Math.abs(secureRandom.nextLong());
     }
+
+    public static boolean isZeroOrLess(long num){
+        if (num == 0 || num < 0)
+            return true;
+        return false;
+    }
 }
