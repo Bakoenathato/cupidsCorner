@@ -2,6 +2,7 @@ package za.ac.cput.factory;
 
 import za.ac.cput.domain.Notification;
 import za.ac.cput.domain.NotificationType;
+import za.ac.cput.domain.UserProfile;
 import za.ac.cput.util.Helper;
 
 public class NotificationFactory {

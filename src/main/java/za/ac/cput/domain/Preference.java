@@ -20,9 +20,9 @@ public class Preference {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int preferenceId;
 
-    @OneToOne
-    @JoinColumn(name = "profile_id", nullable = false)
-    private UserProfile profile;
+//    @OneToOne
+//    @JoinColumn(name = "profile_id", nullable = false)
+//    private UserProfile profile;
 
     private String ageRange;
     private String distance;
@@ -34,7 +34,7 @@ public class Preference {
 
     public Preference(Builder builder){
         this.preferenceId = builder.preferenceId;
-        this.profile = builder.profile;
+        //this.profile = builder.profile;
         this.ageRange = builder.ageRange;
         this.distance = builder.distance;
         this.genderPreference = builder.genderPreference;
@@ -44,9 +44,9 @@ public class Preference {
         return preferenceId;
     }
 
-    public UserProfile getProfile() {
-        return profile;
-    }
+//    public UserProfile getProfile() {
+//        return profile;
+//    }
 
     public String getAgeRange() {
         return ageRange;
@@ -64,19 +64,19 @@ public class Preference {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Preference that)) return false;
-        return getPreferenceId() == that.getPreferenceId() && Objects.equals(getProfile(), that.getProfile()) && Objects.equals(getAgeRange(), that.getAgeRange()) && Objects.equals(getDistance(), that.getDistance()) && Objects.equals(getGenderPreference(), that.getGenderPreference());
+        return getPreferenceId() == that.getPreferenceId() && /*Objects.equals(getProfile(), that.getProfile()) &&*/ Objects.equals(getAgeRange(), that.getAgeRange()) && Objects.equals(getDistance(), that.getDistance()) && Objects.equals(getGenderPreference(), that.getGenderPreference());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPreferenceId(), getProfile(), getAgeRange(), getDistance(), getGenderPreference());
+        return Objects.hash(getPreferenceId(), /*getProfile(),*/ getAgeRange(), getDistance(), getGenderPreference());
     }
 
     @Override
     public String toString() {
         return "Preference{" +
                 "preferenceId=" + preferenceId +
-                ", profile=" + profile +
+                /*", profile=" + profile +*/
                 ", ageRange='" + ageRange + '\'' +
                 ", distance='" + distance + '\'' +
                 ", genderPreference='" + genderPreference + '\'' +
@@ -85,7 +85,7 @@ public class Preference {
 
     public static class Builder {
         private int preferenceId;
-        private UserProfile profile;
+        //private UserProfile profile;
         private String ageRange;
         private String distance;
         private String genderPreference;
@@ -95,10 +95,10 @@ public class Preference {
             return this;
         }
 
-        public Builder setProfile(UserProfile profile) {
-            this.profile = profile;
-            return this;
-        }
+//        public Builder setProfile(UserProfile profile) {
+//            this.profile = profile;
+//            return this;
+//        }
 
         public Builder setAgeRange(String ageRange) {
             this.ageRange = ageRange;
@@ -117,7 +117,7 @@ public class Preference {
 
         public Builder copy(Preference p) {
             this.preferenceId = p.preferenceId;
-            this.profile = p.getProfile();
+            //this.profile = p.getProfile();
             this.ageRange = p.getAgeRange();
             this.distance = p.getDistance();
             this.genderPreference = p.getGenderPreference();

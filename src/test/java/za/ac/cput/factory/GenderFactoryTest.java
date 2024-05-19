@@ -27,7 +27,7 @@ class GenderFactoryTest {
 
     @Test
     void testBuildGenderWithRandomValues() {
-        Gender randomGender = GenderFactory.buildGender();
+        Gender randomGender = GenderFactory.buildGender(" ", " ");
         assertNotNull(randomGender);
         assertNotNull(randomGender.getGenderId());
         assertNotNull(randomGender.getDescription());

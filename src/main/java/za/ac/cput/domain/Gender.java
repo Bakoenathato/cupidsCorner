@@ -13,8 +13,6 @@ public class Gender {
     private String genderId;
     private String description;
 
-    @OneToOne(mappedBy = "Gender", cascade = CascadeType.ALL)
-
 
     protected Gender() {}
 

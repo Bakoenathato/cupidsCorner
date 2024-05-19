@@ -17,7 +17,7 @@ public class Location {
     private String province;
     private String area;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    //@OneToOne(cascade = CascadeType.ALL)
     protected Location() {}
 
     private Location(Builder builder) {
