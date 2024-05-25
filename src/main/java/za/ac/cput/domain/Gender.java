@@ -10,7 +10,7 @@ import java.util.Objects;
 @Entity
 public class Gender {
     @Id
-    private Long genderId;
+    private long genderId;
     private String description;
 
 
@@ -23,7 +23,7 @@ public class Gender {
         this.description = builder.description;
     }
 
-    public Long getGenderId() {
+    public long getGenderId() {
         return genderId;
     }
 
@@ -54,10 +54,10 @@ public class Gender {
     }
 
     public static class Builder {
-        private Long genderId;
+        private long genderId;
         private String description;
 
-        public Builder setGenderId(Long genderId) {
+        public Builder setGenderId(long genderId) {
             this.genderId = genderId;
             return this;
         }

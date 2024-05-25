@@ -1,23 +1,16 @@
 package za.ac.cput.service;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 
 
-import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.DisplayImage;
-import za.ac.cput.domain.User;
 import za.ac.cput.factory.DisplayImageFactory;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.MethodOrder;
 import org.junit.jupiter.api.TestMethodOrder;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.boot.test.context.SpringBootTest;
-import static org.springframework.beans.factory.annotation.Autowired;
 import static org.springframework.test.util.AssertionErrors.assertNotNull;
 
-@SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class DisplayImageServiceTest {
 
-    @Autowired
     private DisplayImageService displayImageService;
 
     private static  DisplayImage displayImage1;

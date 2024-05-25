@@ -31,6 +31,11 @@ public class UserprofileService implements IUserprofileService{
     }
 
     @Override
+    public void delete(String profileId) {
+        repository.deleteById(profileId);
+    }
+
+    @Override
     public List<UserProfile> getall() {
         return repository.findAll();
     }

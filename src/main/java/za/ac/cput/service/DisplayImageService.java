@@ -31,6 +31,11 @@ public class DisplayImageService implements IDisplayImageService{
     }
 
     @Override
+    public void delete(Long displayId) {
+        repository.deleteById(displayId);
+    }
+
+    @Override
     public List<DisplayImage> getAll(){
         return repository.findAll();
     }

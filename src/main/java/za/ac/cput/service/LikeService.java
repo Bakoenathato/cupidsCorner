@@ -30,10 +30,12 @@ public class LikeService implements ILikeService {
         return repository.save(like);
     }
 
-//    @Override
-//    public Like delete(Like like) {
-//        return repository.delete(like);
-//    }
+    @Override
+    public void delete(String likeID) {
+        repository.deleteById(likeID);
+    }
+
+
     @Override
     public List<Like> getall() {
         return repository.findAll();

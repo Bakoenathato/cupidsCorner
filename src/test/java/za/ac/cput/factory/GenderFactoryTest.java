@@ -15,19 +15,19 @@ class GenderFactoryTest {
 
     @BeforeEach
     void setUp() {
-        gender = GenderFactory.buildGender("11", "Male");
+        gender = GenderFactory.buildGender(11L, "Male");
     }
 
     @Test
     void testBuildGenderWithParams() {
         assertNotNull(gender);
-        assertEquals("11", gender.getGenderId());
+        assertEquals(11L, gender.getGenderId());
         assertEquals("Male", gender.getDescription());
     }
 
     @Test
     void testBuildGenderWithRandomValues() {
-        Gender randomGender = GenderFactory.buildGender();
+        Gender randomGender = GenderFactory.buildGender( 23L, " ");
         assertNotNull(randomGender);
         assertNotNull(randomGender.getGenderId());
         assertNotNull(randomGender.getDescription());
@@ -41,13 +41,13 @@ class GenderFactoryTest {
 
     @Test
     void testBuildGenderWithNullDescription() {
-        Gender nullDescGender = GenderFactory.buildGender("22", null);
+        Gender nullDescGender = GenderFactory.buildGender(22L, null);
         assertNull(nullDescGender);
     }
 
     @Test
     void testBuildGenderWithEmptyValues() {
-        Gender emptyValuesGender = GenderFactory.buildGender("", "");
+        Gender emptyValuesGender = GenderFactory.buildGender(0L, "");
         assertNull(emptyValuesGender);
     }
 }

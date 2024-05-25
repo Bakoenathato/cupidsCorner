@@ -18,10 +18,10 @@ public class UserprofileFactory {
     private Preference prefernce;
     private Like like;
     private LocalDateTime time;
-    public static UserProfile createUser(String profileID, User userID, String intrest, boolean profile_vis, LocalDateTime created_at, Location LocationID, Preference prefernceID, Like like,Match matchrequest,Match matchedaccpeted){
-        if(Helper.isNullOrEmpty(profileID)||Helper.isNullOrEmpty(String.valueOf(userID))||Helper.isNullOrEmpty(intrest)||Helper.isNullOrEmpty(String.valueOf(profile_vis))||Helper.isNullOrEmpty(String.valueOf(created_at))||Helper.isNullOrEmpty(String.valueOf(LocationID))||Helper.isNullOrEmpty(String.valueOf(prefernceID))|Helper.isNullOrEmpty(String.valueOf(like))||Helper.isNullOrEmpty(String.valueOf(matchrequest))||Helper.isNullOrEmpty(String.valueOf(matchedaccpeted)))
+    public static UserProfile createUser(String profileID, User userID, String interest, boolean profile_vis, LocalDateTime created_at, Location LocationID, Preference preferenceID, Like like,Match matchrequest,Match matchedaccpeted){
+        if(Helper.isNullOrEmpty(profileID)||Helper.isNullOrEmpty(String.valueOf(userID))||Helper.isNullOrEmpty(interest)||Helper.isNullOrEmpty(String.valueOf(profile_vis))||Helper.isNullOrEmpty(String.valueOf(created_at))||Helper.isNullOrEmpty(String.valueOf(LocationID))||Helper.isNullOrEmpty(String.valueOf(preferenceID))|Helper.isNullOrEmpty(String.valueOf(like))||Helper.isNullOrEmpty(String.valueOf(matchrequest))||Helper.isNullOrEmpty(String.valueOf(matchedaccpeted)))
             return null;
-        return new UserProfile.Builder().setProfileID(profileID).setUserID(userID).setInterests(intrest).setProfile_visibility(profile_vis).setCreated_at(created_at).setLocationID(LocationID).setPreferenceID(prefernceID).setLikes(like).build();
+        return new UserProfile.Builder().setProfileID(profileID).setUserID(userID).setInterests(interest).setProfile_visibility(profile_vis).setCreated_at(created_at).setLocationID(LocationID).setPreferenceID(preferenceID).setLikes(like).build();
     }
 
 

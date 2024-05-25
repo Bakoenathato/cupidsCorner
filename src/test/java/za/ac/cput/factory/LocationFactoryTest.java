@@ -19,7 +19,7 @@ class LocationFactoryTest {
         assertNotNull(location);
         assertEquals("Cape Town", location.getCity());
         assertEquals("Western Cape", location.getProvince());
-        assertEquals("Bellville", location.getLocationArea());
+        assertEquals("Bellville", location.getCity());
     }
 
     @Test

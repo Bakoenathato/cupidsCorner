@@ -1,19 +1,32 @@
-package za.ac.cput.factory;
+package za.ac.cput.service;
+
+/* ReportServiceTest.java
+ReportServiceTest  class
+Author: Leonard Gabriel Langa (221069054)
+Date: 17 May 2024
+*/
+
 
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.*;
+import za.ac.cput.factory.*;
 
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class ReportFactoryTest {
+class ReportServiceTest {
 
-    // UserProfile 1
+    @Autowired
+    ReportService reportService;
+
     private DisplayImage image1 = DisplayImageFactory.createDisplayImage(1L,"myProfileImage1");
     private User user1 = UserFactory.buildNewUser("322", "Leon225", "Langa@02",
             "221069054@mycput.ac.za", "Leonard", "Langa", Gender.MALE, image1);
@@ -28,7 +41,6 @@ class ReportFactoryTest {
 
 
     // UserProfile 2
-
     private DisplayImage image2 = DisplayImageFactory.createDisplayImage(2L,"myProfileImage2");
     private User user2 = UserFactory.buildNewUser("323", "GhostRider77", "Ghost@225",
             "lindastevenson97@gmail.com", "Linda", "Stevenson", Gender.FEMALE, image2);
@@ -40,22 +52,45 @@ class ReportFactoryTest {
     private UserProfile userProfileReported = UserprofileFactory.createUserProfile("231", user2,
             "Swimming, Biking, Weight Lifting", true, LocalDateTime.now(), location2, preference2, likes2);
 
-    // End of UserProfile 2
+    private Report report = ReportFactory.buildReport(500L,"In appropriate comments", LocalDateTime.now(),
+            userProfileReporter, userProfileReported);
+
     @Test
     @Order(1)
-    void testBuildReport() {
-        Report report = ReportFactory.buildReport(500L,"In appropriate comments", LocalDateTime.now(),
-                userProfileReporter, userProfileReported);
-        assertNotNull(report);
-        System.out.println(report);
+    void create() {
+        Report created = reportService.create(report);
+        assertNotNull(created);
+        System.out.println(created);
     }
 
     @Test
     @Order(2)
-    void testBuildReportWithFail() {
-        Report report = ReportFactory.buildReport(0,"In appropriate comments", LocalDateTime.now(),
-                userProfileReporter, userProfileReported);
-        assertNotNull(report);
-        System.out.println(report);
+    void read() {
+        Report read = reportService.read(report.getReportId());
+        assertNotNull(read);
+        System.out.println(read);
+    }
+
+    @Test
+    @Order(3)
+    void update() {
+        Report newReport = new Report.Builder().copy(report)
+                .setReason("Sending Inappropriate Images")
+                .build();
+        Report updated = reportService.update(newReport);
+        assertNotNull(updated);
+        System.out.println(updated);
+    }
+
+    @Test
+    @Order(4)
+    void delete() {
+        reportService.delete(report.getReportId());
+    }
+
+    @Test
+    @Order(5)
+    void getAll() {
+        System.out.println(reportService.getAll());
     }
 }

@@ -5,8 +5,8 @@ import za.ac.cput.util.Helper;
 
 public class GenderFactory {
 
-    public static Gender buildGender(String genderId, String description) {
-        if (Helper.isNullOrEmpty(genderId) || Helper.isNullOrEmpty(description)) {
+    public static Gender buildGender(Long genderId, String description) {
+        if (Helper.isZeroOrLess(genderId) || Helper.isNullOrEmpty(description)) {
             return null;
         }
         return new Gender.Builder()
