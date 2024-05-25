@@ -51,6 +51,11 @@ public class MatchService implements IMatchService {
     }
 
     @Override
+    public void delete(Integer matchId) {
+        matchRepository.deleteById(matchId);
+    }
+
+    @Override
     public List<Match> getAll() {
         return matchRepository.findAll();
     }

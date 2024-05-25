@@ -41,6 +41,11 @@ public class PreferenceService implements IPreferenceService{
     }
 
     @Override
+    public void delete(Integer preferenceId) {
+        preferenceRepository.deleteById(preferenceId);
+    }
+
+    @Override
     public List<Preference> getAll(){
         return preferenceRepository.findAll();
     }

@@ -43,7 +43,7 @@ public class NotificationFactory {
                 createdAt == null || locationId == null || preferenceId == null || likes == null)
             return null;
 
-        UserProfile useProfile = UserprofileFactory.createUserProfile(profileId, userId, interests, true, createdAt,
+        UserProfile useProfile = UserprofileFactory.createUser(profileId, userId, interests, true, createdAt,
                 locationId, preferenceId, likes);
         return new Notification.Builder()
                 .setNotificationId(notificationId)
@@ -62,7 +62,7 @@ public class NotificationFactory {
             return null;
 
         long notificationId = Helper.generateLongId();
-        UserProfile useProfile = UserprofileFactory.createUserProfile(profileId, userId, interests, true, createdAt,locationId,
+        UserProfile useProfile = UserprofileFactory.createUser(profileId, userId, interests, true, createdAt,locationId,
                 preferenceId, likes);
         return new Notification.Builder()
                 .setNotificationId(notificationId)
