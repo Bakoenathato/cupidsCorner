@@ -21,13 +21,13 @@ class MatchServiceTest {
     private MatchService matchService;
 
 
-    private DisplayImage image = DisplayImageFactory.createDisplayImage(1L,"myProfileImage");
+    private DisplayImage image = DisplayImageFactory.createDisplayImage(1,"myProfileImage");
 
     private User user1 = UserFactory.buildUser("123", "ColourStrings", "Strings",
-            "thato@gmail.com", "Thato", "Mokoena", "male", image);
+            "thato@gmail.com", "Thato", "Mokoena", "male", "image");
 
     private User user2 = UserFactory.buildUser("321", "Nicky", "m!m1",
-            "nicky@gmail.com", "Lannike", "Msitho", "FEMALE", image);
+            "nicky@gmail.com", "Lannike", "Msitho", "FEMALE", "image");
 
     private Location location = LocationFactory.createLocation("Cape Town",
             "Western Cape", "ParkLands");
@@ -36,7 +36,7 @@ class MatchServiceTest {
             "10km", Gender.MALE);
 
     private Preference preference2 = PreferenceFactory.buildPreference(1,"20-30",
-            "10km", Gender.MALE.toString());
+            "10km", Gender.MALE);
 
     private Like likes = LikeFactory.buildLike("3", "8", "4", LocalDateTime.now());
 

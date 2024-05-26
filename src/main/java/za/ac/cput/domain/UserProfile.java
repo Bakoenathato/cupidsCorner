@@ -212,5 +212,16 @@ public class UserProfile  {
         return new UserProfile(this);
     }
 }
+
+    @OneToOne(mappedBy = "profile", optional = false)
+    private Preference preference;
+
+    public Preference getPreference() {
+        return preference;
+    }
+
+    public void setPreference(Preference preference) {
+        this.preference = preference;
+    }
 }
 
