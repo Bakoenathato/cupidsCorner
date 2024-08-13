@@ -9,7 +9,6 @@ package za.ac.cput.domain;
 
 import jakarta.persistence.*;
 
-import javax.annotation.processing.Generated;
 import java.util.Objects;
 
 @Entity
@@ -18,15 +17,19 @@ public class Preference {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int preferenceId;
+    private long preferenceId;
 
     @OneToOne
     @JoinColumn(name = "profile_id", nullable = false)
     private UserProfile profile;
 
-    private String ageRange;
-    private String distance;
-    private String genderPreference;
+    private int minAge;
+    private int maxAge;
+
+    private int maxDistance;
+
+    @Enumerated(EnumType.STRING)
+    private Gender genderPreference;
 
     protected Preference() {
 
@@ -35,12 +38,13 @@ public class Preference {
     private Preference(Builder builder){
         this.preferenceId = builder.preferenceId;
         this.profile = builder.profile;
-        this.ageRange = builder.ageRange;
-        this.distance = builder.distance;
+        this.minAge = builder.minAge;
+        this.maxAge = builder.maxAge;
+        this.maxDistance = builder.maxDistance;
         this.genderPreference = builder.genderPreference;
     }
 
-    public int getPreferenceId() {
+    public long getPreferenceId() {
         return preferenceId;
     }
 
@@ -48,15 +52,19 @@ public class Preference {
         return profile;
     }
 
-    public String getAgeRange() {
-        return ageRange;
+    public int getMinAge() {
+        return minAge;
     }
 
-    public String getDistance() {
-        return distance;
+    public int getMaxAge() {
+        return maxAge;
     }
 
-    public String getGenderPreference() {
+    public int getMaxDistance() {
+        return maxDistance;
+    }
+
+    public Gender getGenderPreference() {
         return genderPreference;
     }
 
@@ -64,12 +72,12 @@ public class Preference {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Preference that)) return false;
-        return getPreferenceId() == that.getPreferenceId() && Objects.equals(getProfile(), that.getProfile()) && Objects.equals(getAgeRange(), that.getAgeRange()) && Objects.equals(getDistance(), that.getDistance()) && Objects.equals(getGenderPreference(), that.getGenderPreference());
+        return getPreferenceId() == that.getPreferenceId() && getMinAge() == that.getMinAge() && getMaxAge() == that.getMaxAge() && getMaxDistance() == that.getMaxDistance() && Objects.equals(getProfile(), that.getProfile()) && getGenderPreference() == that.getGenderPreference();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPreferenceId(), getProfile(), getAgeRange(), getDistance(), getGenderPreference());
+        return Objects.hash(getPreferenceId(), getProfile(), getMinAge(), getMaxAge(), getMaxDistance(), getGenderPreference());
     }
 
     @Override
@@ -77,20 +85,22 @@ public class Preference {
         return "Preference{" +
                 "preferenceId=" + preferenceId +
                 ", profile=" + profile +
-                ", ageRange='" + ageRange + '\'' +
-                ", distance='" + distance + '\'' +
-                ", genderPreference='" + genderPreference + '\'' +
+                ", minAge=" + minAge +
+                ", maxAge=" + maxAge +
+                ", maxDistance=" + maxDistance +
+                ", genderPreference=" + genderPreference +
                 '}';
     }
 
     public static class Builder {
-        private int preferenceId;
+        private long preferenceId;
         private UserProfile profile;
-        private String ageRange;
-        private String distance;
-        private String genderPreference;
+        private int minAge;
+        private int maxAge;
+        private int maxDistance;
+        private Gender genderPreference;
 
-        public Builder setPreferenceId(int preferenceId) {
+        public Builder setPreferenceId(long preferenceId) {
             this.preferenceId = preferenceId;
             return this;
         }
@@ -100,27 +110,33 @@ public class Preference {
             return this;
         }
 
-        public Builder setAgeRange(String ageRange) {
-            this.ageRange = ageRange;
+        public Builder setMinAge(int minAge) {
+            this.minAge = minAge;
             return this;
         }
 
-        public Builder setDistance(String distance) {
-            this.distance = distance;
+        public Builder setMaxAge(int maxAge) {
+            this.maxAge = maxAge;
             return this;
         }
 
-        public Builder setGenderPreference(String genderPreference) {
+        public Builder setMaxDistance(int maxDistance) {
+            this.maxDistance = maxDistance;
+            return this;
+        }
+
+        public Preference.Builder setGenderPreference(Gender genderPreference) {
             this.genderPreference = genderPreference;
             return this;
         }
 
         public Builder copy(Preference p) {
             this.preferenceId = p.preferenceId;
-            this.profile = p.getProfile();
-            this.ageRange = p.getAgeRange();
-            this.distance = p.getDistance();
-            this.genderPreference = p.getGenderPreference();
+            this.profile = p.profile;
+            this.minAge = p.minAge;
+            this.maxAge = p.maxAge;
+            this.maxDistance = p.maxDistance;
+            this.genderPreference = p.genderPreference;
             return this;
         }
 

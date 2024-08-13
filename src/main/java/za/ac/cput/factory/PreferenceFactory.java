@@ -6,35 +6,24 @@ package za.ac.cput.factory;
     Date 19 May 2024
 */
 
-
+import za.ac.cput.domain.Gender;
 import za.ac.cput.domain.Preference;
 import za.ac.cput.domain.UserProfile;
 import za.ac.cput.util.Helper;
 
 public class PreferenceFactory {
-    public static Preference buildPreference(int preferenceId, String ageRange, String distance, String genderPreference){
-        if (Helper.isZero(preferenceId) || Helper.isNullOrEmpty(ageRange) || Helper.isNullOrEmpty(distance) || Helper.isNullOrEmpty(genderPreference)) {
+
+    public static Preference buildPreference(long preferenceId, UserProfile profile, int minAge, int maxAge, int maxDistance, Gender genderPreference) {
+        if (preferenceId <= 0 || profile == null || minAge <= 0 || maxAge <= 0 || maxDistance <= 0 || genderPreference == null)
             return null;
-        }
+
         return new Preference.Builder()
                 .setPreferenceId(preferenceId)
-                .setAgeRange(ageRange)
-                .setDistance(distance)
+                .setProfile(profile)
+                .setMinAge(minAge)
+                .setMaxAge(maxAge)
+                .setMaxDistance(maxDistance)
                 .setGenderPreference(genderPreference)
                 .build();
     }
-
-
-//    public static Preference buildPreference(int preferenceId, String ageRange, String distance, String genderPreference){
-//        if (Helper.isZero(preferenceId) || Helper.isNullOrEmpty(ageRange) || Helper.isNullOrEmpty(distance) || Helper.isNullOrEmpty(genderPreference)) {
-//            return null;
-//        }
-//
-//        return new Preference.Builder()
-//                .setPreferenceId(preferenceId)
-//                .setAgeRange(ageRange)
-//                .setDistance(distance)
-//                .setGenderPreference(genderPreference)
-//                .build();
-//    }
 }

@@ -1,4 +1,6 @@
 package za.ac.cput.factory;
+import za.ac.cput.domain.DisplayImage;
+import za.ac.cput.domain.Gender;
 import za.ac.cput.util.Helper;
 import za.ac.cput.domain.User;
 
@@ -12,7 +14,7 @@ Date: 24 March 2024
 
 public class UserFactory {
     public static User buildUser(String userId, String userName, String password, String email, String firstName,
-                                 String lastName,String genderId, String displayId){
+                                 String lastName, Gender gender, DisplayImage displayImage) {
         if (Helper.isNullOrEmpty(userId) || Helper.isNullOrEmpty(email) || Helper.isNullOrEmpty(password))
             return null;
         return new User.Builder().setUserId(userId)
@@ -21,15 +23,15 @@ public class UserFactory {
                 .setEmail(email)
                 .setFirstName(firstName)
                 .setLastName(lastName)
-                .setGenderId(genderId)
-                .setDisplayId(displayId)
+                .setGender(gender)
+                .setDisplayImage(displayImage)
                 .build();
     }
     public static User buildUser(String userName, String password, String email, String firstName,
-                                 String lastName, String genderId, String displayId){
+                                 String lastName, Gender gender, DisplayImage displayImage){
         if (Helper.isNullOrEmpty(userName) || Helper.isNullOrEmpty(password) || Helper.isNullOrEmpty(email) ||
                 Helper.isNullOrEmpty(firstName) || Helper.isNullOrEmpty(lastName) ||
-                Helper.isNullOrEmpty(genderId) || Helper.isNullOrEmpty(displayId))
+                gender != null || displayImage == null)
             return null;
         String userId = Helper.generateId();
         return new User.Builder().setUserId(userId)
@@ -37,8 +39,8 @@ public class UserFactory {
                 .setPassword(password)
                 .setEmail(email)
                 .setFirstName(firstName).setLastName(lastName)
-                .setGenderId(genderId)
-                .setDisplayId(displayId)
+                .setGender(gender)
+                .setDisplayImage(displayImage)
                 .build();
 
     }

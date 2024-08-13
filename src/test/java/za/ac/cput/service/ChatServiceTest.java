@@ -7,7 +7,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import za.ac.cput.domain.Chat;
-import za.ac.cput.repository.ChatRepository.ChatRepository1;
+import za.ac.cput.repository.ChatRepository;
 import za.ac.cput.service.ChatService;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public class ChatServiceTest {
     private ChatService chatService;
 
     @Autowired
-    private ChatRepository1 chatRepository;
+    private ChatRepository chatRepository;
 
     private Chat chat1, chat2;
 

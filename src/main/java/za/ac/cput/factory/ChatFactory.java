@@ -7,7 +7,7 @@ import za.ac.cput.domain.Chat;
 public class ChatFactory {
 
     public static Chat createChat(String sender, String receiver, String message, String timestamp) {
-        // Validate the parameters (optional, depending on your requirements)
+
         if (sender == null || sender.isEmpty()) {
             throw new IllegalArgumentException("Sender cannot be null or empty");
         }

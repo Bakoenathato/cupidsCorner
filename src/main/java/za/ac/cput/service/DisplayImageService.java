@@ -8,6 +8,7 @@ import java.util.List;
 
 @Service
 public class DisplayImageService implements IDisplayImageService{
+
     private DisplayImageRepository repository;
 
     @Autowired
