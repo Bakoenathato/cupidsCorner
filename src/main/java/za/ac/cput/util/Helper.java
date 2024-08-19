@@ -9,9 +9,7 @@ import java.util.UUID;
 
 public class Helper {
     public static boolean isNullOrEmpty(String s){
-        if(s==null||s.isEmpty())
-            return true;
-        return false;
+        return s == null || s.isEmpty();
     }
 
     public static String generateId(){
@@ -19,9 +17,7 @@ public class Helper {
     }
 
     public static boolean isZero(int id){
-        if (id == 0)
-            return true;
-        return false;
+        return id == 0;
     }
 
     public static Long generateLongId(){
@@ -30,8 +26,6 @@ public class Helper {
     }
 
     public static boolean isZeroOrLess(long num){
-        if (num == 0 || num < 0)
-            return true;
-        return false;
+        return num == 0 || num < 0;
     }
 }

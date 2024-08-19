@@ -91,10 +91,10 @@ public class Match {
             return this;
         }
 
-        public Builder copy(Match m){
-            this.setMatchId(m.getMatchId());
-            this.setProfile1(m.getProfile1());
-            this.setProfile2(m.getProfile2());
+        public Builder copy(Match match){
+            this.setMatchId(match.getMatchId());
+            this.setProfile1(match.getProfile1());
+            this.setProfile2(match.getProfile2());
             return this;
         }
 

@@ -31,7 +31,7 @@ public class PreferenceService implements IPreferenceService{
     }
 
     @Override
-    public Preference read(Integer preferenceId){
+    public Preference read(Long preferenceId){
         return preferenceRepository.findById(preferenceId).orElse(null);
     }
 
@@ -41,7 +41,7 @@ public class PreferenceService implements IPreferenceService{
     }
 
     @Override
-    public void delete(Integer preferenceId) {
+    public void delete(Long preferenceId) {
         preferenceRepository.deleteById(preferenceId);
     }
 

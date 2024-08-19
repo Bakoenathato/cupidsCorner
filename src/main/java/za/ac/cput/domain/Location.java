@@ -4,19 +4,24 @@ package za.ac.cput.domain;
 // 222135654
 
 import java.util.Objects;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.CascadeType;
+
+import jakarta.persistence.*;
 
 @Entity
 public class Location {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postalCode;
+
     private String city;
+
     private String province;
+
     private String area;
+
+    @OneToOne(mappedBy = "location", cascade = CascadeType.ALL)
+    private UserProfile userProfile;
 
     //@OneToOne(cascade = CascadeType.ALL)
     protected Location() {}
@@ -26,6 +31,7 @@ public class Location {
         this.city = builder.city;
         this.province = builder.province;
         this.area = builder.area;
+        this.userProfile = builder.userProfile;
     }
 
     public Long getPostalCode() {
@@ -44,20 +50,20 @@ public class Location {
         return area;
     }
 
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Location location = (Location) o;
-        return Objects.equals(postalCode, location.postalCode) &&
-                Objects.equals(city, location.city) &&
-                Objects.equals(province, location.province) &&
-                Objects.equals(area, location.area);
+        if (!(o instanceof Location location)) return false;
+        return Objects.equals(getPostalCode(), location.getPostalCode()) && Objects.equals(getCity(), location.getCity()) && Objects.equals(getProvince(), location.getProvince()) && Objects.equals(getArea(), location.getArea()) && Objects.equals(getUserProfile(), location.getUserProfile());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(postalCode, city, province, area);
+        return Objects.hash(getPostalCode(), getCity(), getProvince(), getArea(), getUserProfile());
     }
 
     @Override
@@ -67,6 +73,7 @@ public class Location {
                 ", city='" + city + '\'' +
                 ", province='" + province + '\'' +
                 ", area='" + area + '\'' +
+                ", userProfile=" + userProfile +
                 '}';
     }
 
@@ -75,6 +82,7 @@ public class Location {
         private String city;
         private String province;
         private String area;
+        private UserProfile userProfile;
 
         public Builder setPostalCode(Long postalCode) {
             this.postalCode = postalCode;
@@ -96,11 +104,17 @@ public class Location {
             return this;
         }
 
+        public Builder setUserProfile(UserProfile userProfile) {
+            this.userProfile = userProfile;
+            return this;
+        }
+
         public Builder copy(Location location) {
             this.postalCode = location.postalCode;
             this.city = location.city;
             this.province = location.province;
             this.area = location.area;
+            this.userProfile = location.userProfile;
             return this;
         }
 

@@ -2,7 +2,7 @@ package za.ac.cput.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Chat;
-import za.ac.cput.repository.ChatRepository.ChatRepository1;
+import za.ac.cput.repository.ChatRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,15 +10,15 @@ import java.util.Optional;
 @Service
 public class ChatService implements IChatService {
 
-    private final ChatRepository1 chatRepository;
+    private final ChatRepository chatRepository;
 
     @Autowired
-    public ChatService(ChatRepository1 chatRepository) {
+    public ChatService(ChatRepository chatRepository) {
         this.chatRepository = chatRepository;
     }
 
     @Override
-    public Chat save(Chat chat) {
+    public Chat create(Chat chat) {
         return chatRepository.save(chat);
     }
 

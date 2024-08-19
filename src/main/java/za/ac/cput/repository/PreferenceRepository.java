@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Preference;
 
 @Repository
-public interface PreferenceRepository extends JpaRepository<Preference, Integer> {
+public interface PreferenceRepository extends JpaRepository<Preference, Long> {
 }

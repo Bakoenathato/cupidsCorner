@@ -1,9 +1,9 @@
 package za.ac.cput.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 
+import java.util.Arrays;
 import java.util.Objects;
 
 
@@ -11,9 +11,16 @@ import java.util.Objects;
 public class DisplayImage {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long displayId;
 
-    private String image;
+    @Lob
+    @Column(length = 100000)
+    private byte[] displayImage;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
 
     protected DisplayImage() {
@@ -21,56 +28,67 @@ public class DisplayImage {
 
     private DisplayImage(Builder builder) {
         this.displayId = builder.displayId;
-        this.image = builder.image;
+        this.displayImage = builder.displayImage;
+        this.user = builder.user;
     }
 
     public long getDisplayId() {
         return displayId;
     }
 
-    public String getImage() {
-        return image;
+    public byte[] getDisplayImage() {
+        return displayImage;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        DisplayImage that = (DisplayImage) o;
-        return displayId == that.displayId && Objects.equals(image, that.image);
+        if (!(o instanceof DisplayImage that)) return false;
+        return getDisplayId() == that.getDisplayId() && Objects.deepEquals(getDisplayImage(), that.getDisplayImage()) && Objects.equals(getUser(), that.getUser());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(displayId, image);
+        return Objects.hash(getDisplayId(), Arrays.hashCode(getDisplayImage()), getUser());
     }
 
     @Override
     public String toString() {
         return "DisplayImage{" +
                 "displayId=" + displayId +
-                ", image='" + image + '\'' +
+                ", displayImage=" + Arrays.toString(displayImage) +
+                ", user=" + user +
                 '}';
     }
 
     public static class Builder {
         private long displayId;
-        private String image;
-
+        private byte[] displayImage;
+        private User user;
 
         public Builder setDisplayId(long displayId) {
             this.displayId = displayId;
             return this;
         }
 
-        public Builder setImage(String image) {
-            this.image = image;
+        public Builder setDisplayImage(byte[] displayImage) {
+            this.displayImage = displayImage;
+            return this;
+        }
+
+        public Builder setUser(User user) {
+            this.user = user;
             return this;
         }
 
         public Builder copy(DisplayImage displayImage) {
             this.displayId = displayImage.displayId;
-            this.image = displayImage.image;
+            this.displayImage = displayImage.displayImage;
+            this.user = displayImage.user;
             return this;
         }
 

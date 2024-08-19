@@ -28,7 +28,8 @@ public class UserProfile  {
 
     private LocalDateTime created_at;
 
-    @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "locationID")
     protected Location LocationID;
 
     @OneToOne (cascade = CascadeType.ALL)

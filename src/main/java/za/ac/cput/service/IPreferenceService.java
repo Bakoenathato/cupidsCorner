@@ -11,6 +11,6 @@ import za.ac.cput.domain.Preference;
 
 import java.util.List;
 
-public interface IPreferenceService extends IService<Preference, Integer> {
+public interface IPreferenceService extends IService<Preference, Long> {
     List<Preference> getAll();
 }

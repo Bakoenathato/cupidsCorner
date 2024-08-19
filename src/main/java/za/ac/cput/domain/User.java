@@ -22,8 +22,13 @@ public class User  {
     private String email;
     private String firstName;
     private String lastName;
-    private String genderId;
-    private String displayId;
+
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private DisplayImage displayImage;
 
     @CreatedDate
     private LocalDateTime createdAt;
@@ -39,8 +44,8 @@ public class User  {
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
         this.createdAt = builder.createdAt;
-        this.genderId = builder.genderId;
-        this.displayId = builder.displayId;
+        this.gender = builder.gender;
+        this.displayImage = builder.displayImage;
 
     }
 
@@ -61,30 +66,33 @@ public class User  {
     public String getFirstName() {
         return firstName;
     }
+
     public String getLastName(){
         return lastName;
     }
-    public LocalDateTime getCtreatedAt(){
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public DisplayImage getDisplayImage() {
+        return displayImage;
+    }
+
+    public LocalDateTime getCreatedAt() {
         return createdAt;
-    }
-    public String getGenderId() {
-        return genderId;
-    }
-    public String getDisplayId(){
-        return displayId;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(userId, user.userId) && Objects.equals(userName, user.userName) && Objects.equals(password, user.password) && Objects.equals(email, user.email) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(genderId, user.genderId) && Objects.equals(displayId, user.displayId) && Objects.equals(createdAt, user.createdAt);
+        if (!(o instanceof User user)) return false;
+        return Objects.equals(getUserId(), user.getUserId()) && Objects.equals(getUserName(), user.getUserName()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && getGender() == user.getGender() && Objects.equals(getDisplayImage(), user.getDisplayImage()) && Objects.equals(getCreatedAt(), user.getCreatedAt());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, userName, password, email, firstName, lastName, genderId, displayId, createdAt);
+        return Objects.hash(getUserId(), getUserName(), getPassword(), getEmail(), getFirstName(), getLastName(), getGender(), getDisplayImage(), getCreatedAt());
     }
 
     @Override
@@ -96,8 +104,8 @@ public class User  {
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", genderId='" + genderId + '\'' +
-                ", displayId='" + displayId + '\'' +
+                ", gender=" + gender +
+                ", displayImage=" + displayImage +
                 ", createdAt=" + createdAt +
                 '}';
     }
@@ -110,8 +118,8 @@ public class User  {
         private String firstName;
         private String lastName;
         private LocalDateTime createdAt;
-        private String genderId;
-        private String displayId;
+        private Gender gender;
+        private DisplayImage displayImage;
 
 
 
@@ -152,15 +160,15 @@ public class User  {
             return this;
 
         }
-        public Builder setGenderId(String genderId) {
-            this.genderId = genderId;
-            return this;
 
+        public Builder setGender(Gender gender) {
+            this.gender = gender;
+            return this;
         }
-        public Builder setDisplayId(String displayId) {
-            this.displayId = displayId;
-            return this;
 
+        public Builder setDisplayImage(DisplayImage displayImage) {
+            this.displayImage = displayImage;
+            return this;
         }
 
         public Builder copy(User user) {
@@ -171,8 +179,8 @@ public class User  {
             this.firstName = user.firstName;
             this.lastName = user.lastName;
             this.createdAt = user.createdAt;
-            this.genderId = user.genderId;
-            this.displayId = user.displayId;
+            this.gender = user.gender;
+            this.displayImage = user.displayImage;
             return this;
         }
 
