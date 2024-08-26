@@ -3,6 +3,8 @@ package za.ac.cput.domain;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -36,17 +38,19 @@ public class UserProfile  {
     @JoinColumn(name = "preferenceID")
     private Preference preferenceID;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "likeID")
-    private Like likes;
+    @OneToMany(mappedBy = "likedProfile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Like> receivedLikes = new HashSet<>();
 
-    @OneToMany(mappedBy = "profile1")
-    private Set<Match> matchRequest;
+    @OneToMany(mappedBy = "profile1", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Match> matchRequest = new HashSet<>();
 
-    @OneToMany(mappedBy = "profile2")
-    private Set<Match> matchedAccepted;
+    @OneToMany(mappedBy = "profile2", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Match> matchedAccepted = new HashSet<>();
 
-    public UserProfile() {
+    @OneToMany(mappedBy = "userProfile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Swipe> swipes;
+
+    protected UserProfile() {
     }
 
     protected UserProfile(Builder builder) {
@@ -55,11 +59,12 @@ public class UserProfile  {
         this.Interests = builder.Interests;
         this.profile_visibility = builder.profile_visibility;
         this.created_at = builder.created_at;
-        this.LocationID=builder.LocationID;
-        this.preferenceID= builder.preferenceID;;
-        this.likes=builder.likes;
+        this.LocationID = builder.LocationID;
+        this.preferenceID = builder.preferenceID;;
+        this.receivedLikes = builder.receivedLikes;
         this.matchRequest = builder.matchRequest;
         this.matchedAccepted = builder.matchedAccepted;
+        this.swipes = builder.swipes;
     }
 
     public String getProfileID() {
@@ -86,8 +91,8 @@ public class UserProfile  {
         return LocationID;
     }
 
-    public Like getLikes() {
-        return likes;
+    public Set<Like> getReceivedLikes() {
+        return receivedLikes;
     }
 
     public boolean isProfile_visibility() {
@@ -106,17 +111,20 @@ public class UserProfile  {
         return matchedAccepted;
     }
 
+    public List<Swipe> getSwipes() {
+        return swipes;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserProfile that = (UserProfile) o;
-        return profile_visibility == that.profile_visibility && Objects.equals(profileID, that.profileID) && Objects.equals(userID, that.userID) && Objects.equals(Interests, that.Interests) && Objects.equals(created_at, that.created_at) && Objects.equals(LocationID, that.LocationID) && Objects.equals(preferenceID, that.preferenceID) && Objects.equals(likes, that.likes);
+        if (!(o instanceof UserProfile profile)) return false;
+        return isProfile_visibility() == profile.isProfile_visibility() && Objects.equals(getProfileID(), profile.getProfileID()) && Objects.equals(getUserID(), profile.getUserID()) && Objects.equals(getInterests(), profile.getInterests()) && Objects.equals(getCreated_at(), profile.getCreated_at()) && Objects.equals(getLocationID(), profile.getLocationID()) && Objects.equals(getPreferenceID(), profile.getPreferenceID()) && Objects.equals(getReceivedLikes(), profile.getReceivedLikes()) && Objects.equals(getMatchRequest(), profile.getMatchRequest()) && Objects.equals(getMatchedAccepted(), profile.getMatchedAccepted()) && Objects.equals(getSwipes(), profile.getSwipes());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(profileID, userID, Interests, profile_visibility, created_at, LocationID, preferenceID, likes);
+        return Objects.hash(getProfileID(), getUserID(), getInterests(), isProfile_visibility(), getCreated_at(), getLocationID(), getPreferenceID(), getReceivedLikes(), getMatchRequest(), getMatchedAccepted(), getSwipes());
     }
 
     @Override
@@ -129,7 +137,10 @@ public class UserProfile  {
                 ", created_at=" + created_at +
                 ", LocationID=" + LocationID +
                 ", preferenceID=" + preferenceID +
-                ", likes=" + likes +
+                ", receivedLikes=" + receivedLikes +
+                ", matchRequest=" + matchRequest +
+                ", matchedAccepted=" + matchedAccepted +
+                ", swipes=" + swipes +
                 '}';
     }
 
@@ -141,9 +152,10 @@ public class UserProfile  {
         private LocalDateTime created_at;
         private Location LocationID;
         private Preference preferenceID;
-        private Like likes;
+        private Set<Like> receivedLikes;
         private Set<Match> matchRequest;
         private Set<Match> matchedAccepted;
+        private List<Swipe> swipes;
 
         public Builder setProfileID(String profileID) {
             this.profileID = profileID;
@@ -180,8 +192,8 @@ public class UserProfile  {
             return this;
         }
 
-        public Builder setLikes(Like likes) {
-            this.likes = likes;
+        public Builder setReceivedLikes(Set<Like> receivedLikes) {
+            this.receivedLikes = receivedLikes;
             return this;
         }
 
@@ -195,6 +207,11 @@ public class UserProfile  {
             return this;
         }
 
+        public Builder setSwipes(List<Swipe> swipes) {
+            this.swipes = swipes;
+            return this;
+        }
+
         public Builder copy(UserProfile e) {
         this.profileID = e.profileID;
         this.userID = e.userID;
@@ -203,9 +220,10 @@ public class UserProfile  {
         this.created_at = e.created_at;
         this.LocationID= e.LocationID;
         this.preferenceID=e.preferenceID;
-        this.likes=e.likes;
+        this.receivedLikes=e.receivedLikes;
         this.matchRequest=e.matchRequest;
         this.matchedAccepted=e.matchedAccepted;
+        this.swipes=e.swipes;
         return this;
     }
 
@@ -214,15 +232,15 @@ public class UserProfile  {
     }
 }
 
-    @OneToOne(mappedBy = "profile", optional = false)
-    private Preference preference;
-
-    public Preference getPreference() {
-        return preference;
-    }
-
-    public void setPreference(Preference preference) {
-        this.preference = preference;
-    }
+//    @OneToOne(mappedBy = "profile", optional = false)
+//    private Preference preference;
+//
+//    public Preference getPreference() {
+//        return preference;
+//    }
+//
+//    public void setPreference(Preference preference) {
+//        this.preference = preference;
+//    }
 }
 

@@ -21,7 +21,7 @@ public class LikeService implements ILikeService {
     }
 
     @Override
-    public Like read(String likeID) {
+    public Like read(Long likeID) {
         return repository.findById(likeID).orElse(null);
     }
 
@@ -31,7 +31,7 @@ public class LikeService implements ILikeService {
     }
 
     @Override
-    public void delete(String likeID) {
+    public void delete(Long likeID) {
         repository.deleteById(likeID);
     }
 

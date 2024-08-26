@@ -15,7 +15,7 @@ public class DisplayImage {
     private long displayId;
 
     @Lob
-    @Column(length = 100000)
+    @Basic(fetch = FetchType.LAZY) // load images when you need them
     private byte[] displayImage;
 
     @OneToOne(fetch = FetchType.LAZY)

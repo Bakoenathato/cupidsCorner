@@ -1,10 +1,10 @@
-package za.ac.cput.Controller;
+package za.ac.cput.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Gender;
 import za.ac.cput.domain.Like;
-import za.ac.cput.service.GenderService;
+//import za.ac.cput.service.GenderService;
 import za.ac.cput.service.LikeService;
 
 import java.util.List;

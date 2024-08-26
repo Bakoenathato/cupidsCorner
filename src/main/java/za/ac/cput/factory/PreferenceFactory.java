@@ -26,4 +26,17 @@ public class PreferenceFactory {
                 .setGenderPreference(genderPreference)
                 .build();
     }
+
+    public static Preference buildPreferenceWithoutProfile(long preferenceId, int minAge, int maxAge, int maxDistance, Gender genderPreference) {
+        if (preferenceId <= 0 ||  minAge <= 0 || maxAge <= 0 || maxDistance <= 0 || genderPreference == null)
+            return null;
+
+        return new Preference.Builder()
+                .setPreferenceId(preferenceId)
+                .setMinAge(minAge)
+                .setMaxAge(maxAge)
+                .setMaxDistance(maxDistance)
+                .setGenderPreference(genderPreference)
+                .build();
+    }
 }

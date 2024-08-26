@@ -11,8 +11,11 @@ import jakarta.persistence.*;
 
 import java.util.Objects;
 
+// unique constraint to prevent duplicate matches.
 @Entity
-@Table(name = "matches")
+@Table(name = "matches", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"profileID_1", "profileID2"})
+})
 public class Match {
 
     @Id
@@ -28,10 +31,9 @@ public class Match {
     private UserProfile profile2;
 
     protected Match() {
-
     }
 
-    public Match(Builder builder) {
+    protected Match(Builder builder) {
         this.matchId = builder.matchId;
         this.profile1 = builder.profile1;
         this.profile2 = builder.profile2;

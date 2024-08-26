@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Like;
 
 @Repository
-public interface LikeRepository extends JpaRepository<Like,String> {
+public interface LikeRepository extends JpaRepository<Like,Long> {
 }

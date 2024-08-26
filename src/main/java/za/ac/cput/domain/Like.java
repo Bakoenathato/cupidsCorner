@@ -1,7 +1,6 @@
 package za.ac.cput.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -9,90 +8,99 @@ import java.util.Objects;
 @Entity
 public class Like {
     @Id
-    private String likeID;
-    private String likerID;
-    private String LikedID;
-    private LocalDateTime liked_at;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long likeID;
+
+    @ManyToOne
+    @JoinColumn(name = "liker_id", nullable = false)
+    private UserProfile liker; // user profile that liked another profile
+
+    @ManyToOne
+    @JoinColumn(name = "liked_id", nullable = false)
+    private UserProfile likedProfile; // the profile that was liked
+
+    private LocalDateTime likedAt;
 
     protected Like(){
 
     }
     private Like (Builder builder){
         this.likeID=builder.likeID;
-        this.likerID=builder.likerID;
-        this.LikedID=builder.LikedID;
-        this.liked_at=builder.liked_at;
+        this.liker = builder.liker;
+        this.likedProfile = builder.likedProfile;
+        this.likedAt = builder.likedAt;
 
     }
 
-    public String getLikeID() {
+    public long getLikeID() {
         return likeID;
     }
 
-    public String getLikerID() {
-        return likerID;
+    public UserProfile getLiker() {
+        return liker;
     }
 
-    public String getLikedID() {
-        return LikedID;
+    public UserProfile getLikedProfile() {
+        return likedProfile;
     }
 
-    public LocalDateTime getLiked_at() {
-        return liked_at;
+    public LocalDateTime getLikedAt() {
+        return likedAt;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Like like = (Like) o;
-        return Objects.equals(likeID, like.likeID) && Objects.equals(likerID, like.likerID) && Objects.equals(LikedID, like.LikedID) && Objects.equals(liked_at, like.liked_at);
+        if (!(o instanceof Like like)) return false;
+        return getLikeID() == like.getLikeID() && Objects.equals(getLiker(), like.getLiker()) && Objects.equals(getLikedProfile(), like.getLikedProfile()) && Objects.equals(getLikedAt(), like.getLikedAt());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(likeID, likerID, LikedID, liked_at);
+        return Objects.hash(getLikeID(), getLiker(), getLikedProfile(), getLikedAt());
     }
 
     @Override
     public String toString() {
         return "Like{" +
-                "likeID='" + likeID + '\'' +
-                ", likerID='" + likerID + '\'' +
-                ", LikedID='" + LikedID + '\'' +
-                ", liked_at=" + liked_at +
+                "likeID=" + likeID +
+                ", liker=" + liker +
+                ", likedProfile=" + likedProfile +
+                ", likedAt=" + likedAt +
                 '}';
     }
-    public static class Builder{
-        private String likeID;
-        private String likerID;
-        private String LikedID;
-        private LocalDateTime liked_at;
 
-        public Builder setLikeID(String likeID) {
+    public static class Builder{
+        private long likeID;
+        private UserProfile liker;
+        private UserProfile likedProfile;
+        private LocalDateTime likedAt;
+
+        public Builder setLikeID(long likeID) {
             this.likeID = likeID;
             return this;
         }
 
-        public Builder setLikerID(String likerID) {
-            this.likerID = likerID;
+        public Builder setLiker(UserProfile liker) {
+            this.liker = liker;
             return this;
         }
 
-        public Builder setLikedID(String likedID) {
-            LikedID = likedID;
+        public Builder setLikedProfile(UserProfile likedProfile) {
+            this.likedProfile = likedProfile;
             return this;
         }
 
-        public Builder setLiked_at(LocalDateTime liked_at) {
-            this.liked_at = liked_at;
+        public Builder setLikedAt(LocalDateTime likedAt) {
+            this.likedAt = likedAt;
             return this;
         }
-        public Builder copy(Like n){
-            this.likeID=n.likeID;
-            this.likerID=n.likerID;
-            this.LikedID=n.LikedID;
-            this.liked_at=n.liked_at;
+
+        public Builder copy(Like like){
+            this.likeID=like.likeID;
+            this.liker=like.liker;
+            this.likedProfile=like.likedProfile;
+            this.likedAt=like.likedAt;
             return this;
 
         }
