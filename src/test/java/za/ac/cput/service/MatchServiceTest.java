@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.*;
 import za.ac.cput.factory.*;
+import za.ac.cput.repository.MatchRepository;
+import za.ac.cput.repository.UserprofileRepository;
 
 import java.time.LocalDateTime;
 
@@ -20,34 +22,9 @@ class MatchServiceTest {
     @Autowired
     private MatchService matchService;
 
+    private MatchRepository matchRepository;
 
-    private DisplayImage image = DisplayImageFactory.createDisplayImage(1,"myProfileImage");
-
-    private User user1 = UserFactory.buildUser("123", "ColourStrings", "Strings",
-            "thato@gmail.com", "Thato", "Mokoena", "male", "image");
-
-    private User user2 = UserFactory.buildUser("321", "Nicky", "m!m1",
-            "nicky@gmail.com", "Lannike", "Msitho", "FEMALE", "image");
-
-    private Location location = LocationFactory.createLocation("Cape Town",
-            "Western Cape", "ParkLands");
-
-    private Preference preference1 = PreferenceFactory.buildPreference(7,"20-30",
-            "10km", Gender.MALE);
-
-    private Preference preference2 = PreferenceFactory.buildPreference(1,"20-30",
-            "10km", Gender.MALE);
-
-    private Like likes = LikeFactory.buildLike("3", "8", "4", LocalDateTime.now());
-
-    private UserProfile profile1 = UserprofileFactory.createUser("123", user1,
-            "Movies, Anime, Video Games", true, LocalDateTime.now(),location, preference1, likes);
-
-    private UserProfile profile2 = UserprofileFactory.createUser("321", user2,
-            "Movies, Soccer, Video Games", true, LocalDateTime.now(),location, preference2, likes);
-
-    private Match match = MatchFactory.buildMatch(1, profile1, profile2);
-
+    private Match match;
 
     @Test
     void a_create() {

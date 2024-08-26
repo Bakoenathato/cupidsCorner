@@ -29,4 +29,16 @@ public class LocationFactory {
                 .setArea(area)
                 .build();
     }
+
+    public static Location buildLocationWithoutProfile(Long postalCode, String city, String province, String area) {
+        if (postalCode == null || Helper.isNullOrEmpty(city) || Helper.isNullOrEmpty(province) || Helper.isNullOrEmpty(area))
+            return null;
+
+        return new Location.Builder()
+                .setPostalCode(postalCode)
+                .setCity(city)
+                .setProvince(province)
+                .setArea(area)
+                .build();
+    }
 }
